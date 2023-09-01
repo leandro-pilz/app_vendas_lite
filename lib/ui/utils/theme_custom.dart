@@ -4,6 +4,9 @@ import 'constants.dart';
 
 final themeCustom = ThemeData(
   appBarTheme: AppBarTheme(
+    iconTheme: const IconThemeData(
+      color: Colors.white
+    ),
     color: Colors.green.shade500,
     titleTextStyle: const TextStyle(
       color: Colors.white,
