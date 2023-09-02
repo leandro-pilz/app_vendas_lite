@@ -5,10 +5,11 @@ import 'package:app_vendas_lite/ui/utils/constants.dart';
 import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../utils/infinity_scroll_listener.dart';
 import '../../utils/util.dart';
-import '../../widgets/app_page_scafold.dart';
+import '../../widgets/app_scaffold.dart';
 
 class CustomersPage extends StatelessWidget {
   const CustomersPage({super.key});
@@ -101,7 +102,7 @@ class CustomersPage extends StatelessWidget {
       },
     );
 
-    return AppPageScaffold(
+    return AppScaffold(
       title: 'Clientes',
       usePaddingDefault: false,
       child: ListViewCustom(
@@ -117,6 +118,9 @@ class CustomersPage extends StatelessWidget {
               children: [
                 Text(_customers[index].name),
                 Text(_customers[index].cpfCnpj),
+                TextButton(onPressed: (){
+                  context.goNamed('cotacao');
+                }, child: Text('clique')),
               ],
             ),
           );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../utils/constants.dart';
-import '../widgets/app_page_scafold.dart';
+import '../widgets/app_scaffold.dart';
 import '../widgets/ink_well_custom.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPageScaffold(
+    return AppScaffold(
       title: 'Venda fácil',
       child: _body(context: context),
       usePaddingDefault: false,

@@ -1,4 +1,4 @@
-import 'package:app_vendas_lite/ui/widgets/app_page_scafold.dart';
+import 'package:app_vendas_lite/ui/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -6,7 +6,7 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppPageScaffold(
+    return const AppScaffold(
       title: 'Pedidos',
       child: Center(
         child: Text('Pedidos'),
