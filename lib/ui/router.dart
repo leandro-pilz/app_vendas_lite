@@ -11,11 +11,11 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   navigatorKey: _navigatorKey,
-  initialLocation: '/splash',
+  initialLocation: '/',
   routes: [
     GoRoute(
       name: 'splash',
-      path: '/splash',
+      path: '/',
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           key: state.pageKey,
@@ -31,7 +31,7 @@ final router = GoRouter(
     ),
     GoRoute(
       name: 'home',
-      path: '/',
+      path: '/home',
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           key: state.pageKey,

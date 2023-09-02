@@ -1,5 +1,8 @@
-import 'package:app_vendas_lite/entities/entity.dart';
 import 'package:flutter/material.dart';
+
+import '/entities/entity.dart';
+import '/ui/utils/constants.dart';
+import 'circular_progress_indicator_custom.dart';
 
 class ListViewCustom extends StatelessWidget {
   final List<Entity> list;
@@ -22,26 +25,24 @@ class ListViewCustom extends StatelessWidget {
     return Scrollbar(
       controller: scrollController,
       thumbVisibility: true,
-      child: ListView.builder(
-        controller: scrollController,
-        shrinkWrap: shrinkWrap ?? false,
-        itemCount: list.length,
-        itemBuilder: (_, index) {
-          return Stack(
-            children: [
-              child(index),
-              (isProgress ?? false)
-                  ? Container(
-                      alignment: Alignment.center,
-                      child: const CircularProgressIndicator(
-                        strokeWidth: 3.0,
-                        color: Colors.blue,
-                      ),
-                    )
-                  : const SizedBox.shrink()
-            ],
-          );
-        },
+      child: Stack(
+        children: [
+          ListView.builder(
+            controller: scrollController,
+            shrinkWrap: shrinkWrap ?? false,
+            itemCount: list.length,
+            itemBuilder: (_, index) {
+              return child(index);
+            },
+          ),
+          (isProgress ?? false)
+              ? Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: const EdgeInsets.only(bottom: kLargeMargin),
+                  child: const CircularProgressIndicatorCustom(),
+                )
+              : const SizedBox.shrink()
+        ],
       ),
     );
   }

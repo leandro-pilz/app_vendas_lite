@@ -11,8 +11,29 @@ import '../../utils/infinity_scroll_listener.dart';
 import '../../utils/util.dart';
 import '../../widgets/app_scaffold.dart';
 
-class CustomersPage extends StatelessWidget {
+class CustomersPage extends StatefulWidget {
   const CustomersPage({super.key});
+
+  @override
+  State<CustomersPage> createState() => _CustomersPageState();
+}
+
+class _CustomersPageState extends State<CustomersPage> {
+  late bool isProgress;
+
+  @override
+  void initState() {
+    isProgress = false;
+    super.initState();
+  }
+
+  _timeLoad() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    setState(() {
+      isProgress = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +120,10 @@ class CustomersPage extends StatelessWidget {
     final InfinityScrollListener scrollController = InfinityScrollListener(
       onLoadMore: () {
         log('CARREGAR MAIS INTENS...');
+        setState(() {
+          isProgress = true;
+          _timeLoad();
+        });
       },
     );
 
@@ -106,6 +131,7 @@ class CustomersPage extends StatelessWidget {
       title: 'Clientes',
       usePaddingDefault: false,
       child: ListViewCustom(
+        isProgress: isProgress,
         list: _customers,
         scrollController: scrollController,
         child: (index) {
@@ -118,9 +144,11 @@ class CustomersPage extends StatelessWidget {
               children: [
                 Text(_customers[index].name),
                 Text(_customers[index].cpfCnpj),
-                TextButton(onPressed: (){
-                  context.goNamed('cotacao');
-                }, child: Text('clique')),
+                TextButton(
+                    onPressed: () {
+                      context.goNamed('cotacao');
+                    },
+                    child: Text('clique')),
               ],
             ),
           );

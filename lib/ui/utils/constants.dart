@@ -24,6 +24,15 @@ const double kSmallAxisSpacing = 8.0;
 const double kVerySmallPadding = 4.0;
 const double kSmallPadding = 8.0;
 const double kMediumPadding = 16.0;
+const double kLargePadding = 20.0;
+const double kVeryLargePadding = 24.0;
+
+//Padding
+const double kVerySmallMargin = 4.0;
+const double kSmallMargin = 8.0;
+const double kMediumMargin = 16.0;
+const double kLargeMargin = 20.0;
+const double kVeryLargeMargin = 24.0;
 
 //SizedBox
 const double kSizedBoxVerySmallSpace = 4.0;
