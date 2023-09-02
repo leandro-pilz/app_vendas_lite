@@ -5,9 +5,10 @@ import 'package:app_vendas_lite/ui/utils/constants.dart';
 import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../utils/infinity_scroll_listener.dart';
+import '../../utils/labels.dart';
+import '../../utils/text_style_utils.dart';
 import '../../utils/util.dart';
 import '../../widgets/app_scaffold.dart';
 
@@ -142,13 +143,11 @@ class _CustomersPageState extends State<CustomersPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(_customers[index].name),
-                Text(_customers[index].cpfCnpj),
-                TextButton(
-                    onPressed: () {
-                      context.goNamed('cotacao');
-                    },
-                    child: Text('clique')),
+                Text(
+                  _customers[index].name,
+                  style: largeW600Style,
+                ),
+                Text('$lCnpj: ${_customers[index].cpfCnpj}'),
               ],
             ),
           );
