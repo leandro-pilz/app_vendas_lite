@@ -1,3 +1,4 @@
+import 'package:app_vendas_lite/entities/customer_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +31,7 @@ final router = GoRouter(
       },
     ),
     GoRoute(
+      parentNavigatorKey: _navigatorKey,
       name: 'home',
       path: '/home',
       pageBuilder: (context, state) {
@@ -62,12 +64,13 @@ final router = GoRouter(
           },
         ),
         GoRoute(
+          // parentNavigatorKey: _navigatorKey,
           name: 'cliente',
           path: 'cliente',
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               key: state.pageKey,
-              child: CustomersPage(returnCustomerSelectedPop: state.extra as bool?),
+              child: CustomersPage(),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return FadeTransition(
                   opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),
@@ -78,6 +81,7 @@ final router = GoRouter(
           },
         ),
         GoRoute(
+          parentNavigatorKey: _navigatorKey,
           name: 'pedido',
           path: 'pedido',
           pageBuilder: (context, state) {

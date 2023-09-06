@@ -1,10 +1,13 @@
+import 'package:app_vendas_lite/ui/utils/auto_complete_data.dart';
+import 'package:app_vendas_lite/ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '/entities/customer_entity.dart';
 import '/ui/widgets/text_field_custom.dart';
+import '../../../data.dart';
 import '../../utils/constants.dart';
 import '../../widgets/app_scaffold.dart';
+import '../../widgets/auto_complete_custom.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({super.key});
@@ -14,7 +17,15 @@ class QuotesPage extends StatefulWidget {
 }
 
 class _QuotesPageState extends State<QuotesPage> {
-  CustomerEntity? customerSelected;
+  late Function(Function(CustomerEntity customer)) onSelectedCustomer;
+  late CustomerEntity customerSelected;
+
+  @override
+  void initState() {
+    final date = DateTime.now();
+    customerSelected = CustomerEntity(name: '', cpfCnpj: '', status: false, createAt: date, updateAt: date);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +33,22 @@ class _QuotesPageState extends State<QuotesPage> {
       title: 'Cotações',
       child: Column(
         children: [
-          TextFieldCustom(
-            text: customerSelected == null ? '' : customerSelected?.name ?? '',
-            label: 'Cliente',
-            onTap: () async {
-              final result = await context.pushNamed('cliente', extra: true);
-              if (result != null) {
-                setState(() {
-                  customerSelected = (result as CustomerEntity);
-                });
-              }
+          AutoCompleteCustom(
+            onSelected: (customer) {
+              debugPrint('Cliente selecionado ${customer.display}');
+            },
+            onChanged: (list) {
+              list(customers.map((e) => AutoCompleteData(data: e, filter: e.filter(), display: e.displaySearchValue())).toList());
             },
           ),
-          SizedBox(height: kMediumPadding),
-          TextFieldCustom(text: 'BOLETO 30 DIAS', label: 'Condição de pagamento'),
+          const SizedBox(height: kMediumPadding),
+          TextFieldCustom(
+            text: customerSelected.name,
+            label: 'Cliente',
+            onTap: () {},
+          ),
+          const SizedBox(height: kMediumPadding),
+          const TextFieldCustom(text: 'BOLETO 30 DIAS', label: 'Condição de pagamento'),
         ],
       ),
     );

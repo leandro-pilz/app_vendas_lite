@@ -5,7 +5,7 @@ import '/ui/utils/constants.dart';
 import 'circular_progress_indicator_custom.dart';
 
 class ListViewCustom extends StatelessWidget {
-  final List<Entity> list;
+  final List<dynamic> list;
   final ScrollController scrollController;
   final Widget Function(int index) child;
   final bool? shrinkWrap;

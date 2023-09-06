@@ -10,4 +10,16 @@ class User extends Entity {
     required super.createAt,
     required super.updateAt,
   });
+
+  @override
+  String filter() {
+    // TODO: implement filters
+    throw UnimplementedError();
+  }
+
+  @override
+  displaySearchValue() {
+    // TODO: implement displaySearchValue
+    throw UnimplementedError();
+  }
 }

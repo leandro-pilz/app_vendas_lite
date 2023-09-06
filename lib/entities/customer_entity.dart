@@ -1,10 +1,10 @@
 import 'package:app_vendas_lite/entities/entity.dart';
 
 class CustomerEntity extends Entity {
-  final String name;
-  final String cpfCnpj;
-  final String? email;
-  final String? phone;
+  String name;
+  String cpfCnpj;
+  String? email;
+  String? phone;
 
   CustomerEntity({
     super.id,
@@ -16,4 +16,9 @@ class CustomerEntity extends Entity {
     required super.createAt,
     required super.updateAt,
   });
+
+  @override
+  String filter() {
+    return '$name$cpfCnpj';
+  }
 }
