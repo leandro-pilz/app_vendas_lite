@@ -1,4 +1,3 @@
-import 'package:app_vendas_lite/ui/pages/spalsh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -6,6 +5,7 @@ import '/ui/pages/customer_pages/customers_page.dart';
 import '/ui/pages/home_page.dart';
 import '/ui/pages/order_pages/orders_page.dart';
 import '/ui/pages/quote_pages/quotes_page.dart';
+import '/ui/pages/spalsh_page.dart';
 
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 

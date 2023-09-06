@@ -1,7 +1,7 @@
-import 'package:app_vendas_lite/entities/customer_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '/entities/customer_entity.dart';
 import '/ui/widgets/text_field_custom.dart';
 import '../../utils/constants.dart';
 import '../../widgets/app_scaffold.dart';
