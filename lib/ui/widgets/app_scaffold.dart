@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '/ui/utils/constants.dart';
+import '/ui/widgets/seach_field_custom.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;
   final String? title;
-  final bool? usePaddingDefault, useAppBar;
+  final bool? usePaddingDefault, useAppBar, useSearchField;
   final Color? bodyBackgroundColor;
+  final Function(String value)? onChanged;
+  final VoidCallback? onClear;
 
   const AppScaffold({
     super.key,
@@ -14,7 +17,10 @@ class AppScaffold extends StatelessWidget {
     this.title,
     this.usePaddingDefault,
     this.useAppBar,
+    this.useSearchField,
     this.bodyBackgroundColor,
+    this.onChanged,
+    this.onClear,
   });
 
   @override
@@ -22,7 +28,20 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       appBar: (useAppBar ?? true)
           ? AppBar(
-              title: title != null ? Text(title!) : null,
+              title: !(useSearchField ?? false)
+                  ? Text(title ?? '')
+                  : SearchFieldCustom(
+                      onChanged: (value) {
+                        if (onChanged != null) {
+                          onChanged!(value);
+                        }
+                      },
+                      onClear: () {
+                        if (onClear != null) {
+                          onClear!();
+                        }
+                      },
+                    ),
             )
           : null,
       body: _body(),

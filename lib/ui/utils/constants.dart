@@ -38,3 +38,16 @@ const double kVeryLargeMargin = 24.0;
 const double kSizedBoxVerySmallSpace = 4.0;
 const double kSizedBoxSmallSpace = 8.0;
 const double kSizedBoxMediumSpace = 16.0;
+
+
+//Height
+const double kHeightSearchField = 42.0;
+
+//Durations
+const kVeryFastDurationMilliSeconds = 300;
+const kFastDurationMilliSeconds = 400;
+const kMediumDurationMilliSeconds = 500;
+const kSlowDurationMilliSeconds = 750;
+const kPrettySlowDurationMilliSeconds = 1000;
+const kVeryVerySlowDurationMilliSeconds = 2000;
+const kVerySlowDurationMilliSeconds = 1300;

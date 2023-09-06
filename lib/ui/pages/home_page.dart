@@ -11,7 +11,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: 'Venda fácil',
+      title: '',
+      // title: 'Venda fácil',
       child: _body(context: context),
       usePaddingDefault: false,
     );

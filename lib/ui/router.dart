@@ -67,7 +67,7 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               key: state.pageKey,
-              child: const CustomersPage(),
+              child: CustomersPage(returnCustomerSelectedPop: state.extra as bool?),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return FadeTransition(
                   opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),
