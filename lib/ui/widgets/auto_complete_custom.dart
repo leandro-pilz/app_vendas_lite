@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '/ui/utils/util.dart';
+import '/ui/widgets/seach_field_page.dart';
 import '../utils/auto_complete_data.dart';
 import '../utils/constants.dart';
+import '../utils/labels.dart';
+import '../utils/messages.dart';
+import '../utils/text_style_utils.dart';
 import 'list_view_custom.dart';
 
 class AutoCompleteCustom extends StatefulWidget {
-  final Function(Function(List<AutoCompleteData>) onCallBack) onChanged;
+  final Function(Function(Future<List<AutoCompleteData>>) onCallBack) onChanged;
   final Function(AutoCompleteData) onSelected;
 
   const AutoCompleteCustom({super.key, required this.onChanged, required this.onSelected});
@@ -40,16 +44,21 @@ class _AutoCompleteCustomState extends State<AutoCompleteCustom> {
           return [];
         }
 
-        widget.onChanged((list) {
-          setState(() {
-            dataList = list;
-          });
+        widget.onChanged((list) async {
+          dataList = await list;
         });
 
         return dataList.where((element) => element.filter.toLowerCase().contains(value.text.toLowerCase()));
       },
       fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
-        return _textFormField(controller: controller, focusNode: focusNode, label: 'Clientes');
+        return SearchFieldPage(
+          externalController: controller,
+          focusNode: focusNode,
+          onChanged: (value) {},
+          onClear: () => controller.clear(),
+          hint: searchCustomers,
+          label: lCustomer,
+        );
       },
       optionsViewBuilder: (BuildContext context, Function onSelect, Iterable<AutoCompleteData> list) {
         return Material(
@@ -61,60 +70,30 @@ class _AutoCompleteCustomState extends State<AutoCompleteCustom> {
               return InkWell(
                 onTap: () => onSelect(line),
                 child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: kSmallPadding),
+                  alignment: Alignment.centerLeft,
+                  height: kHeightLineListViewDefault,
                   color: listItemBackgroundColor(index: index),
-                  child: Text(line.display),
+                  child: line.subTitle != null
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(line.title, style: mediumW500Style),
+                            Text(line.subTitle ?? '-'),
+                          ],
+                        )
+                      : Text(line.title, style: mediumW500Style),
                 ),
               );
             },
           ),
         );
       },
-      onSelected: (value)  {
+      onSelected: (value) {
         widget.onSelected(value);
       },
-      displayStringForOption: (data) => data.display,
-    );
-  }
-
-  TextFormField _textFormField({required TextEditingController controller, required FocusNode focusNode, required String label}) {
-    return TextFormField(
-      controller: controller,
-      focusNode: focusNode,
-      decoration: InputDecoration(
-        labelText: label,
-        filled: true,
-        fillColor: Colors.white,
-        hintStyle: const TextStyle(color: Colors.black45),
-        contentPadding: const EdgeInsets.all(kMediumPadding),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(kBorderRadiusDefault),
-          borderSide: const BorderSide(
-            color: Colors.black87,
-            // width: 0.0,
-          ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(kBorderRadiusDefault),
-          borderSide: const BorderSide(
-            color: Colors.black87,
-            // width: 0.0,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(kBorderRadiusDefault),
-          borderSide: const BorderSide(
-            color: Colors.black87,
-            // width: 0.0,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(kBorderRadiusDefault),
-          borderSide: const BorderSide(
-            color: Colors.black87,
-            // width: 0.0,
-          ),
-        ),
-      ),
+      displayStringForOption: (data) => data.title,
     );
   }
 }

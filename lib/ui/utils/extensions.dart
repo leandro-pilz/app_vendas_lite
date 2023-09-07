@@ -10,7 +10,7 @@ extension TextEditingControllerExt on TextEditingController {
 }
 
 extension CustomerToString on CustomerEntity {
-  String displaySearchValue() {
-    return '$name - ${cpfCnpj.trim().length == 11 ? UtilBrasilFields.obterCpf(cpfCnpj) : UtilBrasilFields.obterCnpj(cpfCnpj)}';
+  String cpfCnpjFormatted() {
+    return cpfCnpj.trim().length == 11 ? UtilBrasilFields.obterCpf(cpfCnpj) : UtilBrasilFields.obterCnpj(cpfCnpj);
   }
 }

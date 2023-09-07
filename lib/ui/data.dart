@@ -1,6 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 
-import 'entities/customer_entity.dart';
+import '../entities/customer_entity.dart';
 
 final _date = DateTime.now();
 
@@ -24,7 +24,7 @@ final _customersName = [
   'Nelson Luan Moreira Franca',
   'Tomás Danilo Gaspar Robalinho',
   'Mia Diana Anes de Areosa',
-  'Érika Luana Azambuja Bicudo',
+  'Magdiel lopes',
 ];
 
 final customers = List.generate(20, (index) => CustomerEntity(

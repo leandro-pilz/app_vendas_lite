@@ -53,6 +53,7 @@ class HomePage extends StatelessWidget {
 
   _card({required String title, required IconData icon, required VoidCallback onTap}) {
     return Card(
+      color: Colors.grey.shade300,
       child: InkWellCustom(
         onTap: onTap,
         child: Column(

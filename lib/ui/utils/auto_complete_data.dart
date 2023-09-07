@@ -1,9 +1,15 @@
 import '/entities/entity.dart';
 
-class AutoCompleteData {
+final class AutoCompleteData {
   final Entity data;
   final String filter;
-  final String display;
+  final String title;
+  final String? subTitle;
 
-  AutoCompleteData({required this.data, required this.filter, required this.display});
+  AutoCompleteData({
+    required this.data,
+    required this.filter,
+    required this.title,
+    this.subTitle,
+  });
 }

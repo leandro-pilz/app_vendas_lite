@@ -4,17 +4,18 @@ import '/ui/utils/extensions.dart';
 import '../utils/constants.dart';
 import '../utils/debouncer.dart';
 
-class SearchFieldCustom extends StatefulWidget {
+class SearchFieldAppBar extends StatefulWidget {
   final Function(String value) onChanged;
   final VoidCallback onClear;
+  final String? hint;
 
-  const SearchFieldCustom({super.key, required this.onChanged, required this.onClear});
+  const SearchFieldAppBar({super.key, required this.onChanged, required this.onClear, this.hint});
 
   @override
-  State<SearchFieldCustom> createState() => _TextFormCustomState();
+  State<SearchFieldAppBar> createState() => _TextFormCustomState();
 }
 
-class _TextFormCustomState extends State<SearchFieldCustom> {
+class _TextFormCustomState extends State<SearchFieldAppBar> {
   late Debouncer debouncer;
   late TextEditingController controller;
   late bool isShowClearIcon;
@@ -37,7 +38,7 @@ class _TextFormCustomState extends State<SearchFieldCustom> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: kHeightSearchField,
+      height: kHeightSearchFieldAppbar,
       child: TextFormField(
         controller: controller,
         textCapitalization: TextCapitalization.characters,
@@ -56,7 +57,7 @@ class _TextFormCustomState extends State<SearchFieldCustom> {
           controller.selectAll();
         },
         decoration: InputDecoration(
-          hintText: 'Pesquisar clientes...',
+          hintText: widget.hint,
           prefixIcon: const Icon(Icons.search),
           suffixIcon: isShowClearIcon
               ? IconButton(

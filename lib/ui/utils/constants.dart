@@ -13,7 +13,6 @@ const double kVeryVeryLargeFontSize = 24.0;
 //Size
 const double kVeryLargeSize = 36.0;
 
-
 //Border Radius
 const double kBorderRadiusDefault = 12.0;
 
@@ -39,9 +38,10 @@ const double kSizedBoxVerySmallSpace = 4.0;
 const double kSizedBoxSmallSpace = 8.0;
 const double kSizedBoxMediumSpace = 16.0;
 
-
 //Height
-const double kHeightSearchField = 42.0;
+const double kHeightSearchFieldAppbar = 42.0;
+const double kHeightSearchDefault = 48.0;
+const double kHeightLineListViewDefault = 56.0;
 
 //Durations
 const kVeryFastDurationMilliSeconds = 300;

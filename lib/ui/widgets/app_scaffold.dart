@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/ui/utils/constants.dart';
-import '/ui/widgets/seach_field_custom.dart';
+import '/ui/widgets/seach_field_appbar.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;
@@ -30,7 +30,7 @@ class AppScaffold extends StatelessWidget {
           ? AppBar(
               title: !(useSearchField ?? false)
                   ? Text(title ?? '')
-                  : SearchFieldCustom(
+                  : SearchFieldAppBar(
                       onChanged: (value) {
                         if (onChanged != null) {
                           onChanged!(value);

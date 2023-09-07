@@ -1,4 +1,4 @@
-import 'package:app_vendas_lite/entities/entity.dart';
+import '/entities/entity.dart';
 
 class CustomerEntity extends Entity {
   String name;

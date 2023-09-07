@@ -12,14 +12,13 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      Router.neglect(context, () => context.goNamed('home'));
+    },);
+    return const AppScaffold(
       useAppBar: false,
       child: Center(
-        child: TextButton(
-          onPressed: () => Router.neglect(context, () => context.goNamed('home')),
-          // onPressed: () => context.pushReplacementNamed('home'),
-          child: Text('Ola Mundo'),
-        ),
+        child: Text('Ola Mundo'),
       ),
     );
   }

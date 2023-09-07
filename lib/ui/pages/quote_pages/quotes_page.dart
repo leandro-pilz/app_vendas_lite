@@ -1,10 +1,10 @@
-import 'package:app_vendas_lite/ui/utils/auto_complete_data.dart';
-import 'package:app_vendas_lite/ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '/entities/customer_entity.dart';
+import '/ui/utils/auto_complete_data.dart';
+import '/ui/utils/extensions.dart';
 import '/ui/widgets/text_field_custom.dart';
-import '../../../data.dart';
+import '../../data.dart';
 import '../../utils/constants.dart';
 import '../../widgets/app_scaffold.dart';
 import '../../widgets/auto_complete_custom.dart';
@@ -35,17 +35,22 @@ class _QuotesPageState extends State<QuotesPage> {
         children: [
           AutoCompleteCustom(
             onSelected: (customer) {
-              debugPrint('Cliente selecionado ${customer.display}');
+              debugPrint('Cliente selecionado ${customer.title}');
             },
-            onChanged: (list) {
-              list(customers.map((e) => AutoCompleteData(data: e, filter: e.filter(), display: e.displaySearchValue())).toList());
+            onChanged: (list) async {
+              list(Future.value(
+                customers
+                    .map(
+                      (e) => AutoCompleteData(
+                        data: e,
+                        filter: e.filter(),
+                        title: e.name,
+                        subTitle: e.cpfCnpjFormatted(),
+                      ),
+                    )
+                    .toList(),
+              ));
             },
-          ),
-          const SizedBox(height: kMediumPadding),
-          TextFieldCustom(
-            text: customerSelected.name,
-            label: 'Cliente',
-            onTap: () {},
           ),
           const SizedBox(height: kMediumPadding),
           const TextFieldCustom(text: 'BOLETO 30 DIAS', label: 'Condição de pagamento'),

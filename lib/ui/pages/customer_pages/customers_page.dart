@@ -4,7 +4,7 @@ import 'package:app_vendas_lite/ui/utils/constants.dart';
 import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data.dart';
+import '../../data.dart';
 import '../../utils/infinity_scroll_listener.dart';
 import '../../utils/labels.dart';
 import '../../utils/text_style_utils.dart';
