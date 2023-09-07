@@ -28,7 +28,7 @@ class QuotesPage extends StatefulWidget {
 
 class _QuotesPageState extends State<QuotesPage> {
   late Function(Function(CustomerEntity customer)) onSelectedCustomer;
-  late CustomerEntity customerSelected;
+  CustomerEntity? customerSelected;
   late FormPaymentEntity formPaymentSelected;
   late PaymentTermEntity paymentTermSelected;
   late InfinityScrollListener scrollController;
@@ -37,10 +37,8 @@ class _QuotesPageState extends State<QuotesPage> {
   @override
   void initState() {
     isProgress = false;
-    final date = DateTime.now();
     formPaymentSelected = formPayments.first;
     paymentTermSelected = formPaymentSelected.paymentTerms.first;
-    customerSelected = CustomerEntity(externalId: '', name: '', cpfCnpj: '', status: false, createAt: date, updateAt: date);
     scrollController = InfinityScrollListener(
       onLoadMore: () {
         setState(() {
@@ -70,13 +68,15 @@ class _QuotesPageState extends State<QuotesPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Cotações',
-      onFloatActionButtonPressed: () => context.goNamed(shoppingCartRouteName),
+      onFloatActionButtonPressed: customerSelected != null ? () => context.goNamed(shoppingCartRouteName) : null,
       iconFloatAction: Icons.add_shopping_cart,
       child: Column(
         children: [
           AutoCompleteCustom(
             onSelected: (data) {
-              customerSelected = customers.firstWhere((element) => element.externalId == data.id);
+              setState(() {
+                customerSelected = customers.firstWhere((element) => element.externalId == data.id);
+              });
             },
             onChanged: (list) async {
               list(Future.value(
