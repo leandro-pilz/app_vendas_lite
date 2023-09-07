@@ -42,14 +42,14 @@ class _QuotesPageState extends State<QuotesPage> {
       child: ListView(
         children: [
           AutoCompleteCustom(
-            onSelected: (customer) {
-              debugPrint('Cliente selecionado ${customer.title}');
+            onSelected: (data) {
+              customerSelected = customers.firstWhere((element) => element.externalId == data.id);
             },
             onChanged: (list) async {
               list(Future.value(
                 customers
                     .map((e) => AutoCompleteData(
-                          data: e,
+                          id: e.externalId!,
                           filter: e.filter(),
                           title: e.name,
                           subTitle: e.cpfCnpjFormatted(),
@@ -74,7 +74,7 @@ class _QuotesPageState extends State<QuotesPage> {
           const SizedBox(height: kMediumPadding),
           DropDownCustom(
             initialItem: paymentTermSelected.externalId!,
-            label: lPaymentMethods,
+            label: lPaymentConditions,
             list: formPaymentSelected.paymentTerms.map((e) => DropDownData(id: e.externalId!, title: e.name)).toList(),
             onChanged: (id) {
               final selected = formPaymentSelected.paymentTerms.firstWhere((element) => element.externalId == id);

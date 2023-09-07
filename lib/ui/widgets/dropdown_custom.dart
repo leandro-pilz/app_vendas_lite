@@ -35,7 +35,9 @@ class _DropDownCustomState extends State<DropDownCustom> {
             )
             .toList(),
         onChanged: (id) {
-          widget.onChanged(id!);
+          if (widget.initialItem != id) {
+            widget.onChanged(id!);
+          }
         },
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(kMediumPadding),

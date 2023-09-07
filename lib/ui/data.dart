@@ -32,7 +32,7 @@ final _customersName = [
 final customers = List.generate(
   20,
   (index) => CustomerEntity(
-    externalId: '',
+    externalId: 'dfe14ea0-68b0-45a6-9363-75a6937ed77c$index',
     name: _customersName[index],
     cpfCnpj: UtilBrasilFields.gerarCNPJ(useFormat: true),
     status: true,
