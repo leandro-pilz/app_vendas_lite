@@ -83,6 +83,8 @@ class _TextFormCustomState extends State<SearchFieldPage> {
                     setState(() {
                       isShowClearIcon = false;
                     });
+
+                    widget.onClear();
                   },
                   icon: const Icon(Icons.clear),
                   color: Colors.black87,

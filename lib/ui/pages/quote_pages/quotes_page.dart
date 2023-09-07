@@ -58,7 +58,6 @@ class _QuotesPageState extends State<QuotesPage> {
 
   _timeLoad() async {
     await Future.delayed(const Duration(milliseconds: 500));
-
     setState(() {
       isProgress = false;
     });
@@ -89,6 +88,11 @@ class _QuotesPageState extends State<QuotesPage> {
                         ))
                     .toList(),
               ));
+            },
+            onClear: () {
+              setState(() {
+                customerSelected = null;
+              });
             },
           ),
           const SizedBox(height: kMediumPadding),

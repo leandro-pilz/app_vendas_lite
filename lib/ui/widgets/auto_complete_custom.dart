@@ -12,8 +12,9 @@ import 'list_view_custom.dart';
 class AutoCompleteCustom extends StatefulWidget {
   final Function(Function(Future<List<AutoCompleteData>>) onCallBack) onChanged;
   final Function(AutoCompleteData) onSelected;
+  final VoidCallback? onClear;
 
-  const AutoCompleteCustom({super.key, required this.onChanged, required this.onSelected});
+  const AutoCompleteCustom({super.key, required this.onChanged, required this.onSelected, this.onClear});
 
   @override
   State<AutoCompleteCustom> createState() => _AutoCompleteCustomState();
@@ -55,7 +56,12 @@ class _AutoCompleteCustomState extends State<AutoCompleteCustom> {
           externalController: controller,
           focusNode: focusNode,
           onChanged: (value) {},
-          onClear: () => controller.clear(),
+          onClear: () {
+            controller.clear();
+            if (widget.onClear != null) {
+              widget.onClear!();
+            }
+          },
           hint: searchCustomers,
           label: lCustomers,
         );
