@@ -1,4 +1,3 @@
-import 'package:app_vendas_lite/entities/customer_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -6,7 +5,9 @@ import '/ui/pages/customer_pages/customers_page.dart';
 import '/ui/pages/home_page.dart';
 import '/ui/pages/order_pages/orders_page.dart';
 import '/ui/pages/quote_pages/quotes_page.dart';
+import '/ui/pages/quote_pages/shopping_cart_page.dart';
 import '/ui/pages/spalsh_page.dart';
+import 'utils/routes_name_app.dart';
 
 final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
@@ -15,7 +16,7 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
-      name: 'splash',
+      name: splashRouteName,
       path: '/',
       pageBuilder: (context, state) {
         return CustomTransitionPage(
@@ -32,7 +33,7 @@ final router = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _navigatorKey,
-      name: 'home',
+      name: homeRouteName,
       path: '/home',
       pageBuilder: (context, state) {
         return CustomTransitionPage(
@@ -48,7 +49,7 @@ final router = GoRouter(
       },
       routes: [
         GoRoute(
-          name: 'cotacao',
+          name: quotationRouteName,
           path: 'cotacao',
           pageBuilder: (context, state) {
             return CustomTransitionPage(
@@ -62,10 +63,27 @@ final router = GoRouter(
               },
             );
           },
+          routes: [
+            GoRoute(
+              name: shoppingCartRouteName,
+              path: 'carrinho',
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  key: state.pageKey,
+                  child: const ShoppingCartPage(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+            ),
+          ],
         ),
         GoRoute(
-          // parentNavigatorKey: _navigatorKey,
-          name: 'cliente',
+          name: customerRouteName,
           path: 'cliente',
           pageBuilder: (context, state) {
             return CustomTransitionPage(
@@ -82,7 +100,7 @@ final router = GoRouter(
         ),
         GoRoute(
           parentNavigatorKey: _navigatorKey,
-          name: 'pedido',
+          name: orderRouteName,
           path: 'pedido',
           pageBuilder: (context, state) {
             return CustomTransitionPage(

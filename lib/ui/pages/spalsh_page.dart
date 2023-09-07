@@ -1,6 +1,8 @@
-import 'package:app_vendas_lite/ui/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '/ui/widgets/app_scaffold.dart';
+import '../utils/routes_name_app.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -12,9 +14,12 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 2000), () {
-      Router.neglect(context, () => context.goNamed('home'));
-    },);
+    Future.delayed(
+      const Duration(milliseconds: 2000),
+      () {
+        Router.neglect(context, () => context.goNamed(homeRouteName));
+      },
+    );
     return const AppScaffold(
       useAppBar: false,
       child: Center(

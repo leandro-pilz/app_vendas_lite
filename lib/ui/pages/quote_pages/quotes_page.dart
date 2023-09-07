@@ -1,21 +1,23 @@
-import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '/entities/customer_entity.dart';
 import '/entities/form_payment_entity.dart';
 import '/entities/payment_term_entity.dart';
+import '/ui/data.dart';
 import '/ui/utils/auto_complete_data.dart';
+import '/ui/utils/constants.dart';
 import '/ui/utils/dropdown_data.dart';
 import '/ui/utils/extensions.dart';
+import '/ui/utils/infinity_scroll_listener.dart';
+import '/ui/utils/labels.dart';
+import '/ui/utils/routes_name_app.dart';
+import '/ui/utils/text_style_utils.dart';
+import '/ui/utils/util.dart';
+import '/ui/widgets/app_scaffold.dart';
+import '/ui/widgets/auto_complete_custom.dart';
 import '/ui/widgets/dropdown_custom.dart';
-import '../../data.dart';
-import '../../utils/constants.dart';
-import '../../utils/infinity_scroll_listener.dart';
-import '../../utils/labels.dart';
-import '../../utils/text_style_utils.dart';
-import '../../utils/util.dart';
-import '../../widgets/app_scaffold.dart';
-import '../../widgets/auto_complete_custom.dart';
+import '/ui/widgets/list_view_custom.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({super.key});
@@ -68,10 +70,8 @@ class _QuotesPageState extends State<QuotesPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Cotações',
-      onFloatActionButtonPressed: (){
-
-      },
-      iconFloatAction: Icons.add,
+      onFloatActionButtonPressed: () => context.goNamed(shoppingCartRouteName),
+      iconFloatAction: Icons.add_shopping_cart,
       child: Column(
         children: [
           AutoCompleteCustom(
@@ -120,6 +120,7 @@ class _QuotesPageState extends State<QuotesPage> {
           Expanded(
             child: ListViewCustom(
               isProgress: isProgress,
+              enableBorder: true,
               list: quotations,
               scrollController: scrollController,
               child: (index) {

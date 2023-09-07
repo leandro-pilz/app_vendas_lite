@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../utils/constants.dart';
+import '../utils/routes_name_app.dart';
 import '../widgets/app_scaffold.dart';
 import '../widgets/ink_well_custom.dart';
 
@@ -30,21 +31,21 @@ class HomePage extends StatelessWidget {
           title: 'Cotações',
           icon: Icons.shopping_cart,
           onTap: () {
-            context.goNamed('cotacao');
+            context.goNamed(quotationRouteName);
           },
         ),
         _card(
           title: 'Clientes',
           icon: Icons.people,
           onTap: () {
-            context.goNamed('cliente');
+            context.goNamed(customerRouteName);
           },
         ),
         _card(
           title: 'Pedidos',
           icon: Icons.attach_money,
           onTap: () {
-            context.goNamed('pedido');
+            context.goNamed(orderRouteName);
           },
         ),
       ],

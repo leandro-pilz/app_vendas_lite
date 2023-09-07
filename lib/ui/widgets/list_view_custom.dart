@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '/entities/entity.dart';
 import '/ui/utils/constants.dart';
 import 'circular_progress_indicator_custom.dart';
 
@@ -8,8 +7,7 @@ class ListViewCustom extends StatelessWidget {
   final List<dynamic> list;
   final ScrollController scrollController;
   final Widget Function(int index) child;
-  final bool? shrinkWrap;
-  final bool? isProgress;
+  final bool? shrinkWrap, isProgress, enableBorder;
 
   const ListViewCustom({
     super.key,
@@ -18,6 +16,7 @@ class ListViewCustom extends StatelessWidget {
     required this.child,
     this.shrinkWrap,
     this.isProgress,
+    this.enableBorder,
   });
 
   @override
@@ -28,20 +27,21 @@ class ListViewCustom extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black87,
-                style: BorderStyle.solid,
-                // width: 1.0,
-              ),
-            ),
+            decoration: (enableBorder ?? false)
+                ? BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black87,
+                      style: BorderStyle.solid,
+                      // width: 1.0,
+                    ),
+                  )
+                : null,
             child: ListView.builder(
+              padding: const EdgeInsets.only(bottom: kHeightBottomListView),
               controller: scrollController,
               shrinkWrap: shrinkWrap ?? false,
               itemCount: list.length,
-              itemBuilder: (_, index) {
-                return child(index);
-              },
+              itemBuilder: (_, index) => child(index),
             ),
           ),
           (isProgress ?? false)

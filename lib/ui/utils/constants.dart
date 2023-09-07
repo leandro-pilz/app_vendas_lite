@@ -42,6 +42,7 @@ const double kSizedBoxMediumSpace = 16.0;
 const double kHeightSearchFieldAppbar = 42.0;
 const double kHeightSearchDefault = 48.0;
 const double kHeightLineListViewDefault = 56.0;
+const double kHeightBottomListView = 80.0;
 
 //Durations
 const kVeryFastDurationMilliSeconds = 300;
