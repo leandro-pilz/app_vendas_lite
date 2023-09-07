@@ -52,7 +52,7 @@ class _TextFormCustomState extends State<SearchFieldPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: kHeightSearchDefault,
+      height: kHeightLineListViewDefault,
       child: TextFormField(
         controller: controller,
         focusNode: widget.focusNode,
@@ -92,28 +92,24 @@ class _TextFormCustomState extends State<SearchFieldPage> {
             borderRadius: BorderRadius.circular(kBorderRadiusDefault),
             borderSide: const BorderSide(
               color: Colors.black87,
-              // width: 0.0,
             ),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(kBorderRadiusDefault),
             borderSide: const BorderSide(
               color: Colors.black87,
-              // width: 0.0,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(kBorderRadiusDefault),
             borderSide: const BorderSide(
               color: Colors.black87,
-              // width: 0.0,
             ),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(kBorderRadiusDefault),
             borderSide: const BorderSide(
               color: Colors.black87,
-              // width: 0.0,
             ),
           ),
         ),

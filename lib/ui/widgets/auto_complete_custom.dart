@@ -57,7 +57,7 @@ class _AutoCompleteCustomState extends State<AutoCompleteCustom> {
           onChanged: (value) {},
           onClear: () => controller.clear(),
           hint: searchCustomers,
-          label: lCustomer,
+          label: lCustomers,
         );
       },
       optionsViewBuilder: (BuildContext context, Function onSelect, Iterable<AutoCompleteData> list) {

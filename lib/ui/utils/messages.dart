@@ -1,1 +1,1 @@
-const searchCustomers = 'Pesquisar clientes';
+const searchCustomers = 'Pesquisar clientes...';

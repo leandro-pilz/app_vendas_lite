@@ -1,18 +1,12 @@
 import 'entity.dart';
 
-final class CustomerEntity extends Entity {
-  String name;
-  String cpfCnpj;
-  String? email;
-  String? phone;
+final class PaymentTermEntity extends Entity {
+  final String name;
 
-  CustomerEntity({
+  PaymentTermEntity({
     super.id,
     required super.externalId,
     required this.name,
-    required this.cpfCnpj,
-    this.email,
-    this.phone,
     required super.status,
     required super.createAt,
     required super.updateAt,
@@ -20,6 +14,6 @@ final class CustomerEntity extends Entity {
 
   @override
   String filter() {
-    return '$name$cpfCnpj';
+    throw UnimplementedError();
   }
 }
