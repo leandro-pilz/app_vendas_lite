@@ -27,13 +27,22 @@ class ListViewCustom extends StatelessWidget {
       thumbVisibility: true,
       child: Stack(
         children: [
-          ListView.builder(
-            controller: scrollController,
-            shrinkWrap: shrinkWrap ?? false,
-            itemCount: list.length,
-            itemBuilder: (_, index) {
-              return child(index);
-            },
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black87,
+                style: BorderStyle.solid,
+                // width: 1.0,
+              ),
+            ),
+            child: ListView.builder(
+              controller: scrollController,
+              shrinkWrap: shrinkWrap ?? false,
+              itemCount: list.length,
+              itemBuilder: (_, index) {
+                return child(index);
+              },
+            ),
           ),
           (isProgress ?? false)
               ? Container(

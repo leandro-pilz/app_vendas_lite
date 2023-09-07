@@ -1,6 +1,9 @@
 const lName = 'nome';
 const lCnpj = 'CNPJ';
 const lCpf = 'CPF';
+const lNumber = 'Número';
 const lCustomers = 'Clientes';
 const lPaymentMethods = 'Formas de pagamento';
 const lPaymentConditions = 'Condições de pagamento';
+const lPaymentCondition = 'Condição de pagamento';
+const lCreateAt = 'Criada em';

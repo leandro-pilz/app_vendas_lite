@@ -13,6 +13,10 @@ final themeCustom = ThemeData(
     ),
   ),
   scaffoldBackgroundColor: Colors.white,
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: Colors.green,
+    foregroundColor: Colors.white,
+  ),
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
   useMaterial3: true,
   cardTheme: CardTheme(
@@ -26,9 +30,7 @@ final themeCustom = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
-    hintStyle: const TextStyle(
-      color: Colors.black45
-    ),
+    hintStyle: const TextStyle(color: Colors.black45),
     contentPadding: const EdgeInsets.symmetric(
       vertical: kVerySmallPadding,
     ),

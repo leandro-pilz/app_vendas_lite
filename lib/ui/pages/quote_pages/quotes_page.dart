@@ -1,3 +1,4 @@
+import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:flutter/material.dart';
 
 import '/entities/customer_entity.dart';
@@ -9,7 +10,10 @@ import '/ui/utils/extensions.dart';
 import '/ui/widgets/dropdown_custom.dart';
 import '../../data.dart';
 import '../../utils/constants.dart';
+import '../../utils/infinity_scroll_listener.dart';
 import '../../utils/labels.dart';
+import '../../utils/text_style_utils.dart';
+import '../../utils/util.dart';
 import '../../widgets/app_scaffold.dart';
 import '../../widgets/auto_complete_custom.dart';
 
@@ -25,21 +29,50 @@ class _QuotesPageState extends State<QuotesPage> {
   late CustomerEntity customerSelected;
   late FormPaymentEntity formPaymentSelected;
   late PaymentTermEntity paymentTermSelected;
+  late InfinityScrollListener scrollController;
+  late bool isProgress;
 
   @override
   void initState() {
+    isProgress = false;
     final date = DateTime.now();
     formPaymentSelected = formPayments.first;
     paymentTermSelected = formPaymentSelected.paymentTerms.first;
     customerSelected = CustomerEntity(externalId: '', name: '', cpfCnpj: '', status: false, createAt: date, updateAt: date);
+    scrollController = InfinityScrollListener(
+      onLoadMore: () {
+        setState(() {
+          isProgress = true;
+          _timeLoad();
+        });
+      },
+    );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  _timeLoad() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    setState(() {
+      isProgress = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Cotações',
-      child: ListView(
+      onFloatActionButtonPressed: (){
+
+      },
+      iconFloatAction: Icons.add,
+      child: Column(
         children: [
           AutoCompleteCustom(
             onSelected: (data) {
@@ -83,6 +116,34 @@ class _QuotesPageState extends State<QuotesPage> {
               });
             },
           ),
+          const SizedBox(height: kMediumPadding),
+          Expanded(
+            child: ListViewCustom(
+              isProgress: isProgress,
+              list: quotations,
+              scrollController: scrollController,
+              child: (index) {
+                return Container(
+                  width: double.infinity,
+                  color: listItemBackgroundColor(index: index),
+                  padding: const EdgeInsets.all(kSmallPadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        quotations[index].customer.name,
+                        style: largeW600Style,
+                      ),
+                      Text('$lNumber: ${quotations[index].quotationNumber}'),
+                      Text('$lPaymentCondition: ${quotations[index].formPayment?.name} / ${quotations[index].paymentTerm?.name}'),
+                      Text('$lCreateAt: ${quotations[index].createAt?.maskDateAndTime()}'),
+                    ],
+                  ),
+                );
+              },
+            ),
+          )
         ],
       ),
     );

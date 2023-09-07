@@ -9,6 +9,8 @@ class AppScaffold extends StatelessWidget {
   final bool? usePaddingDefault, useAppBar, useSearchField;
   final Color? bodyBackgroundColor;
   final Function(String value)? onChanged;
+  final VoidCallback? onFloatActionButtonPressed;
+  final IconData? iconFloatAction;
   final VoidCallback? onClear;
 
   const AppScaffold({
@@ -20,6 +22,8 @@ class AppScaffold extends StatelessWidget {
     this.useSearchField,
     this.bodyBackgroundColor,
     this.onChanged,
+    this.onFloatActionButtonPressed,
+    this.iconFloatAction,
     this.onClear,
   });
 
@@ -45,6 +49,12 @@ class AppScaffold extends StatelessWidget {
             )
           : null,
       body: _body(),
+      floatingActionButton: onFloatActionButtonPressed != null
+          ? FloatingActionButton(
+              onPressed: () => onFloatActionButtonPressed!(),
+              child: iconFloatAction != null ? Icon(iconFloatAction) : null,
+            )
+          : null,
     );
   }
 
