@@ -69,7 +69,7 @@ class _QuotesPageState extends State<QuotesPage> {
       title: 'Cotações',
       onFloatActionButtonPressed: customerSelected != null ? () => context.goNamed(shoppingCartRouteName) : null,
       iconFloatAction: Icons.add_shopping_cart,
-      child: Column(
+      body: Column(
         children: [
           AutoCompleteCustom(
             onSelected: (data) {

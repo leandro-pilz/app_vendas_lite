@@ -56,7 +56,7 @@ class _CustomersPageState extends State<CustomersPage> {
     return AppScaffold(
       usePaddingDefault: false,
       useSearchField: true,
-      child: ListViewCustom(
+      body: ListViewCustom(
         isProgress: isProgress,
         list: customers,
         scrollController: scrollController,

@@ -7,3 +7,6 @@ const lPaymentMethods = 'Formas de pagamento';
 const lPaymentConditions = 'Condições de pagamento';
 const lPaymentCondition = 'Condição de pagamento';
 const lCreateAt = 'Criada em';
+const lProductSearch = 'Pesquisa produtos';
+const lCartProducts = 'Produtos carrinho';
+const lCheckoutCart = 'Finalizar carrinho';

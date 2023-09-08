@@ -17,12 +17,12 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(
       const Duration(milliseconds: 2000),
       () {
-        Router.neglect(context, () => context.goNamed(homeRouteName));
+        Router.neglect(context, () => context.goNamed(shoppingCartRouteName));
       },
     );
     return const AppScaffold(
       useAppBar: false,
-      child: Center(
+      body: Center(
         child: Text('Ola Mundo'),
       ),
     );

@@ -4,18 +4,21 @@ import '/ui/utils/constants.dart';
 import '/ui/widgets/seach_field_appbar.dart';
 
 class AppScaffold extends StatelessWidget {
-  final Widget child;
+  final Widget body;
   final String? title;
   final bool? usePaddingDefault, useAppBar, useSearchField;
   final Color? bodyBackgroundColor;
   final Function(String value)? onChanged;
   final VoidCallback? onFloatActionButtonPressed;
+  final int? currentPageIndex;
+  final Function(int index)? onNavigationSelected;
+  final List<Widget>? navigationDestination;
   final IconData? iconFloatAction;
   final VoidCallback? onClear;
 
   const AppScaffold({
     super.key,
-    required this.child,
+    required this.body,
     this.title,
     this.usePaddingDefault,
     this.useAppBar,
@@ -23,6 +26,9 @@ class AppScaffold extends StatelessWidget {
     this.bodyBackgroundColor,
     this.onChanged,
     this.onFloatActionButtonPressed,
+    this.currentPageIndex,
+    this.onNavigationSelected,
+    this.navigationDestination,
     this.iconFloatAction,
     this.onClear,
   });
@@ -55,6 +61,17 @@ class AppScaffold extends StatelessWidget {
               child: iconFloatAction != null ? Icon(iconFloatAction) : null,
             )
           : null,
+      bottomNavigationBar: (onNavigationSelected != null && currentPageIndex != null)
+          ? NavigationBar(
+              labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+              onDestinationSelected: (int index) {
+                onNavigationSelected!(index);
+              },
+              indicatorColor: Colors.green.shade300,
+              selectedIndex: currentPageIndex ?? 0,
+              destinations: navigationDestination ?? [],
+            )
+          : null,
     );
   }
 
@@ -67,7 +84,7 @@ class AppScaffold extends StatelessWidget {
               vertical: kMediumPadding,
             )
           : null,
-      child: child,
+      child: body,
     );
   }
 }

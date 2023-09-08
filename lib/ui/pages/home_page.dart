@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     return AppScaffold(
       title: '',
       // title: 'Venda fácil',
-      child: _body(context: context),
+      body: _body(context: context),
       usePaddingDefault: false,
     );
   }

@@ -8,7 +8,7 @@ class OrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const AppScaffold(
       title: 'Pedidos',
-      child: Center(
+      body: Center(
         child: Text('Pedidos'),
       ),
     );
