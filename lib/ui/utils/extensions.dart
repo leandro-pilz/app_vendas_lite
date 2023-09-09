@@ -37,6 +37,12 @@ extension DecimalFormatter on double {
   }
 }
 
+extension StrintToInt on String {
+  int convertStringToInt() {
+    return int.tryParse(this) ?? 0;
+  }
+}
+
 extension SkuDisplayItemList on SkuEntity {
   String toCodeAndName() {
     return '$code - $name';

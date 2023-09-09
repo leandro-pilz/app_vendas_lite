@@ -78,9 +78,7 @@ class AppScaffold extends StatelessWidget {
   _body() {
     return Container(
       color: bodyBackgroundColor,
-      padding: (usePaddingDefault ?? true)
-          ? const EdgeInsets.all(kSmallPadding)
-          : null,
+      padding: (usePaddingDefault ?? true) ? const EdgeInsets.all(kSmallPadding) : null,
       child: body,
     );
   }

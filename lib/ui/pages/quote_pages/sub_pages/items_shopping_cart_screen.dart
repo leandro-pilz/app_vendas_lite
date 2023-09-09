@@ -8,6 +8,7 @@ import '/ui/utils/labels.dart';
 import '/ui/utils/text_style_utils.dart';
 import '/ui/utils/util.dart';
 import '/ui/widgets/list_view_custom.dart';
+import '../../../widgets/qantity_field_with_actions.dart';
 
 class ItemsShoppingCartScreen extends StatefulWidget {
   const ItemsShoppingCartScreen({super.key});
@@ -83,19 +84,23 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('$lValue ${item.value.formatCurrency()}'),
+                        Text('$lPrice ${item.value.formatCurrency()}'),
                         SizedBox(
-                          width: 150.0,
-                          child: Text(
-                            '$lQty: ${item.quantity.decimalFormatter()}',
-                            textAlign: TextAlign.left,
-                          ),
+                          width: 180.0,
+                          child: Text('$lAmount ${item.amountItem().formatCurrency()}', style: mediumW600Style),
                         ),
                       ],
                     ),
-                    Text(
-                      '$lAmount ${item.amountItem().formatCurrency()}',
-                      style: mediumW600Style,
+                    const SizedBox(height: kSizedBoxSmallSpace),
+                    QuantityFieldWithActions(
+                      initialValue: item.quantity.toInt(),
+                      multipleBatch: item.sku.multipleBatch,
+                      isSlim: true,
+                      onChanged: (value) {
+                        setState(() {
+                          item.quantity = value;
+                        });
+                      },
                     ),
                   ],
                 ),
