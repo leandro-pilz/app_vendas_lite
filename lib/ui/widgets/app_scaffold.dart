@@ -5,7 +5,7 @@ import '/ui/widgets/seach_field_appbar.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
-  final String? title;
+  final String? title, hint;
   final bool? usePaddingDefault, useAppBar, useSearchField;
   final Color? bodyBackgroundColor;
   final Function(String value)? onChanged;
@@ -20,6 +20,7 @@ class AppScaffold extends StatelessWidget {
     super.key,
     required this.body,
     this.title,
+    this.hint,
     this.usePaddingDefault,
     this.useAppBar,
     this.useSearchField,
@@ -41,6 +42,7 @@ class AppScaffold extends StatelessWidget {
               title: !(useSearchField ?? false)
                   ? Text(title ?? '')
                   : SearchFieldAppBar(
+                      hint: hint ?? '',
                       onChanged: (value) {
                         if (onChanged != null) {
                           onChanged!(value);
@@ -78,7 +80,12 @@ class AppScaffold extends StatelessWidget {
   _body() {
     return Container(
       color: bodyBackgroundColor,
-      padding: (usePaddingDefault ?? true) ? const EdgeInsets.all(kSmallPadding) : null,
+      padding: (usePaddingDefault ?? true)
+          ? const EdgeInsets.symmetric(
+              vertical: kMediumPadding,
+              horizontal: kSmallPadding,
+            )
+          : null,
       child: body,
     );
   }

@@ -7,17 +7,20 @@ import '/ui/utils/extensions.dart';
 
 class QuantityFieldWithActions extends StatefulWidget {
   final int multipleBatch;
-  final Function(double value) onChanged;
-  final int? initialValue;
-  final bool? isSlim;
+  final Function(double value, VoidCallback addDeleteAction) onChanged;
+  final Function(VoidCallback removeDeleteAction) onDelete;
+  final double? initialValue;
+  final bool? isSlim, showAddDeleteAction;
   final int? postChangeExecuteMilliSeconds;
 
   const QuantityFieldWithActions({
     super.key,
     required this.multipleBatch,
     required this.onChanged,
+    required this.onDelete,
     this.initialValue,
     this.isSlim,
+    this.showAddDeleteAction,
     this.postChangeExecuteMilliSeconds,
   });
 
@@ -28,10 +31,12 @@ class QuantityFieldWithActions extends StatefulWidget {
 class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
   late TextEditingController controller;
   late int multipleBatch, milliseconds;
+  late bool showAddDeleteAction;
   Timer? timer;
 
   @override
   void initState() {
+    showAddDeleteAction = widget.showAddDeleteAction ?? false;
     multipleBatch = widget.multipleBatch;
     milliseconds = widget.postChangeExecuteMilliSeconds ?? kMediumDurationMilliSeconds;
     assert(multipleBatch > 0);
@@ -52,43 +57,82 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200.0,
-      height: (widget.isSlim ?? false) ? 32.0 : 48.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(kBorderRadiusDefault),
-        border: Border.all(
-          color: Colors.black12,
-        ),
-      ),
-      child: TextField(
-        controller: controller,
-        textAlign: TextAlign.center,
-        maxLines: 1,
-        maxLength: 6,
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(horizontal: kSmallPadding),
-          prefixIcon: _button(text: '-$multipleBatch', isIncrement: false, isPrefixButton: true),
-          suffixIcon: _button(text: '+$multipleBatch', isIncrement: true, isPrefixButton: false),
-          counterText: '',
-        ),
-        keyboardType: TextInputType.number,
-        onTap: () {
-          controller.selectAll();
-        },
-        onChanged: (value) {
-          _run(() {
-            var value = controller.text.convertStringToInt();
-            if (value == 0) {
-              value = multipleBatch;
-            } else if (value % multipleBatch > 0) {
-              value = ((value / multipleBatch).ceil()) * multipleBatch;
-            }
+    return SizedBox(
+      height: (widget.isSlim ?? false) ? 40.0 : 48.0,
+      child: Row(
+        children: [
+          Card(
+            elevation: kSmallElevation,
+            child: Container(
+              width: 200.0,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(kBorderRadiusDefault),
+                border: Border.all(
+                  color: Colors.black12,
+                ),
+              ),
+              child: TextField(
+                controller: controller,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                maxLength: 6,
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: kSmallPadding),
+                  prefixIcon: _button(text: '-$multipleBatch', isIncrement: false, isPrefixButton: true),
+                  suffixIcon: _button(text: '+$multipleBatch', isIncrement: true, isPrefixButton: false),
+                  counterText: '',
+                ),
+                keyboardType: TextInputType.number,
+                onTap: () {
+                  controller.selectAll();
+                },
+                onChanged: (value) {
+                  _run(() {
+                    var value = controller.text.convertStringToInt();
+                    if (value == 0) {
+                      value = multipleBatch;
+                    } else if (value % multipleBatch > 0) {
+                      value = ((value / multipleBatch).ceil()) * multipleBatch;
+                    }
 
-            controller.text = value.toString();
-            widget.onChanged(value.toDouble());
-          });
-        },
+                    controller.text = value.toInt().toString();
+                    widget.onChanged(value.toDouble(), () {
+                      if (!showAddDeleteAction) {
+                        setState(() {
+                          showAddDeleteAction = true;
+                        });
+                      }
+                    });
+                  });
+                },
+              ),
+            ),
+          ),
+          if (showAddDeleteAction) const SizedBox(width: kSizedBoxSmallSpace),
+          showAddDeleteAction
+              ? ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    elevation: kSmallElevation,
+                    shape: const CircleBorder(),
+                  ),
+                  onPressed: () {
+                    widget.onDelete(() {
+                      setState(() {
+                        showAddDeleteAction = false;
+                        controller.clear();
+                      });
+                    });
+                  },
+                  child: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                )
+              : const SizedBox.shrink(),
+        ],
       ),
     );
   }
@@ -112,8 +156,14 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
         }
 
         value = value > 0 ? value : multipleBatch;
-        controller.text = value.toString();
-        widget.onChanged(value.toDouble());
+        controller.text = value.toInt().toString();
+        widget.onChanged(value.toDouble(), () {
+          if (!showAddDeleteAction) {
+            setState(() {
+              showAddDeleteAction = true;
+            });
+          }
+        });
       },
       style: FilledButton.styleFrom(
         backgroundColor: Colors.blue,

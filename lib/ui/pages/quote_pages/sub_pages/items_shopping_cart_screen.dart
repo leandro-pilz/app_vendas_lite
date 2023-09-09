@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../entities/quotation_entity.dart';
 import '/ui/data.dart';
 import '/ui/utils/constants.dart';
 import '/ui/utils/extensions.dart';
@@ -8,10 +9,12 @@ import '/ui/utils/labels.dart';
 import '/ui/utils/text_style_utils.dart';
 import '/ui/utils/util.dart';
 import '/ui/widgets/list_view_custom.dart';
-import '../../../widgets/qantity_field_with_actions.dart';
+import '/ui/widgets/qantity_field_with_actions.dart';
 
 class ItemsShoppingCartScreen extends StatefulWidget {
-  const ItemsShoppingCartScreen({super.key});
+  final QuotationEntity quotation;
+
+  const ItemsShoppingCartScreen({super.key, required this.quotation});
 
   @override
   State<ItemsShoppingCartScreen> createState() => _ItemsShoppingCartScreenState();
@@ -20,9 +23,11 @@ class ItemsShoppingCartScreen extends StatefulWidget {
 class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
   late bool isProgress;
   late InfinityScrollListener scrollController;
+  late QuotationEntity quotation;
 
   @override
   void initState() {
+    quotation = widget.quotation;
     isProgress = false;
     scrollController = InfinityScrollListener(
       onLoadMore: () {
@@ -52,7 +57,7 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    quotations.first.sumAmount();
+    quotation.sumAmount();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -63,10 +68,10 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
         const SizedBox(height: kSizedBoxMediumSpace),
         Expanded(
           child: ListViewCustom(
-            list: quotations.first.items,
+            list: quotation.items,
             scrollController: scrollController,
             child: (index) {
-              final item = quotations.first.items[index];
+              final item = quotation.items[index];
               return Container(
                 width: size.width,
                 color: listItemBackgroundColor(index: index),
@@ -93,14 +98,15 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
                     ),
                     const SizedBox(height: kSizedBoxSmallSpace),
                     QuantityFieldWithActions(
-                      initialValue: item.quantity.toInt(),
+                      initialValue: item.quantity,
                       multipleBatch: item.sku.multipleBatch,
                       isSlim: true,
-                      onChanged: (value) {
+                      onChanged: (value, addDeleteAction) {
                         setState(() {
                           item.quantity = value;
                         });
                       },
+                      onDelete: (removeDeleteAction) {},
                     ),
                   ],
                 ),

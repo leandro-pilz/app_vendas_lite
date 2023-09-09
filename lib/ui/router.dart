@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '/entities/quotation_entity.dart';
 import '/ui/pages/customer_pages/customers_page.dart';
 import '/ui/pages/home_page.dart';
 import '/ui/pages/order_pages/orders_page.dart';
@@ -70,7 +71,7 @@ final router = GoRouter(
               pageBuilder: (context, state) {
                 return CustomTransitionPage(
                   key: state.pageKey,
-                  child: const ShoppingCartPage(),
+                  child: ShoppingCartPage(quotation: state.extra as QuotationEntity),
                   transitionsBuilder: (context, animation, secondaryAnimation, child) {
                     return FadeTransition(
                       opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),

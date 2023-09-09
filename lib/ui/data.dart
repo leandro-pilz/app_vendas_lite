@@ -1,11 +1,13 @@
 import 'package:app_vendas_lite/entities/form_payment_entity.dart';
 import 'package:app_vendas_lite/entities/payment_term_entity.dart';
+import 'package:app_vendas_lite/entities/price_entity.dart';
 import 'package:app_vendas_lite/entities/quotation_entity.dart';
 import 'package:app_vendas_lite/entities/quotation_item_entity.dart';
 import 'package:app_vendas_lite/entities/sku_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 
 import '../entities/customer_entity.dart';
+import '../entities/stock_entity.dart';
 
 final _date = DateTime.now();
 
@@ -146,6 +148,219 @@ final _customerQuotation = CustomerEntity(
   updateAt: _date,
 );
 
+final skusList = [
+  SkuEntity(
+    id: 1,
+    productId: '809447d3-983d-455d-8745-2c3d45d4a8cc',
+    externalId: '1e9cf89e-85a5-4f11-8792-17d2c4b70453',
+    code: '001',
+    name: 'PRODUTO 001',
+    multipleBatch: 3,
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 1,
+      externalId: 'd11e212c-1192-4b72-9a95-da0c700f0371',
+      value: 100.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 1,
+      externalId: 'a6696d63-af37-4aa8-8759-665a4eb3bd65',
+      quantity: 100.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 2,
+    productId: 'ca68df0a-4c0d-45b4-ad42-7e430a3a8761',
+    externalId: '8fd80317-cf42-494b-98cc-b47555bf479f',
+    code: '002',
+    name: 'PRODUTO 002',
+    multipleBatch: 10,
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 2,
+      externalId: '174b5c8c-57b8-46f4-a41a-79254c9955e2',
+      value: 133.21,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 2,
+      externalId: '9be70838-4878-4c3b-a43e-f12f01b263fb',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 3,
+    productId: 'e5c37c27-e415-4332-879f-98b992429019',
+    externalId: '5e0168d6-fdce-490a-a9d5-5ae16e7d9a1b',
+    code: '003',
+    name: 'PRODUTO 003',
+    multipleBatch: 5,
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 3,
+      externalId: 'd17dfb10-26c8-4867-877e-f7f729b1de72',
+      value: 222.20,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 3,
+      externalId: '6471e7b9-18d5-421b-8657-7014e3083fb5',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 4,
+    productId: '602ef948-d589-4891-bc27-33fd646693ca',
+    externalId: '2d683432-e49d-4c9d-9572-eb80b81873bf',
+    code: '004',
+    name: 'PRODUTO 004',
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 4,
+      externalId: 'd225aac6-09c4-4973-849d-04fc60f9ee0d',
+      value: 155.79,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 4,
+      externalId: 'cd78573c-2627-46d9-98e0-13a81c21601a',
+      quantity: 70.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 5,
+    productId: '3320e54e-a046-4cbf-96e0-9f127c651e3d',
+    externalId: '35eef52c-a087-4e73-b6d5-d66d84a544d9',
+    code: '005',
+    name: 'PRODUTO 005',
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 5,
+      externalId: 'd340e6ee-db33-408a-a6b8-ea6ce518b310',
+      value: 75.69,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 5,
+      externalId: '829cebd2-3401-4270-992b-62c9b639ae7e',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 6,
+    productId: 'abab5f2c-bf10-4559-9f39-ad29c854ea15',
+    externalId: 'a0d2c457-fb5e-47cd-801b-aa8de598e0f5',
+    code: '006',
+    name: 'PRODUTO 006',
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 6,
+      externalId: '2d72d486-7b50-422f-ac46-2c388c5e98e9',
+      value: 60.70,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 6,
+      externalId: 'f58fa7d0-88c6-409a-aba6-841bb44acb4a',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 7,
+    productId: 'afc854b8-a064-42f5-ba6b-db5963bf4091',
+    externalId: '9c4a5771-d423-494c-bfdd-17e6dcc94d9f',
+    code: '007',
+    name: 'PRODUTO 007',
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 7,
+      externalId: 'ce208452-b6f9-4496-9021-1c04898b4355',
+      value: 50.36,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 7,
+      externalId: 'f7f3e3d1-e5a9-4e08-a199-e01bc98979f3',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+  SkuEntity(
+    id: 8,
+    productId: '82a9d50c-4503-4efe-a372-25d3d951dbe9',
+    externalId: '36c875d9-53a0-43bd-83ba-6477a3285c2b',
+    code: '008',
+    name: 'PRODUTO 008',
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    price: PriceEntity(
+      id: 7,
+      externalId: 'd967a461-b308-47c1-a24c-f6c545c1fd2a',
+      value: 33.23,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    stock: StockEntity(
+      id: 7,
+      externalId: 'c89155a0-fd49-4a7a-9dfc-48b3370b5ef7',
+      quantity: 30.0,
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+  ),
+];
 
 final quotations = [
   QuotationEntity(
@@ -177,6 +392,7 @@ final quotations = [
         externalId: '3dedffb7-7232-40e2-90ca-15079f4b8ffb',
         sku: SkuEntity(
           id: 1,
+          productId: '809447d3-983d-455d-8745-2c3d45d4a8cc',
           externalId: '1e9cf89e-85a5-4f11-8792-17d2c4b70453',
           code: '001',
           name: 'PRODUTO 001',
@@ -196,6 +412,7 @@ final quotations = [
         externalId: 'a2cf1fd9-558d-436e-a358-260775b7d0c2',
         sku: SkuEntity(
           id: 2,
+          productId: 'ca68df0a-4c0d-45b4-ad42-7e430a3a8761',
           externalId: '8fd80317-cf42-494b-98cc-b47555bf479f',
           code: '002',
           name: 'PRODUTO 002',
@@ -215,6 +432,7 @@ final quotations = [
         externalId: 'b3a6d67c-fb8b-49d1-8fe0-f54be672a888',
         sku: SkuEntity(
           id: 3,
+          productId: 'e5c37c27-e415-4332-879f-98b992429019',
           externalId: '5e0168d6-fdce-490a-a9d5-5ae16e7d9a1b',
           code: '003',
           name: 'PRODUTO 003',
@@ -234,6 +452,7 @@ final quotations = [
         externalId: '316befc2-e57a-445e-8c57-43b917188083',
         sku: SkuEntity(
           id: 4,
+          productId: '602ef948-d589-4891-bc27-33fd646693ca',
           externalId: '2d683432-e49d-4c9d-9572-eb80b81873bf',
           code: '004',
           name: 'PRODUTO 004',
@@ -252,6 +471,7 @@ final quotations = [
         externalId: '6a6e224d-3ff6-4f65-be1e-a48cd6defe86',
         sku: SkuEntity(
           id: 5,
+          productId: '3320e54e-a046-4cbf-96e0-9f127c651e3d',
           externalId: '35eef52c-a087-4e73-b6d5-d66d84a544d9',
           code: '005',
           name: 'PRODUTO 005',
@@ -270,6 +490,7 @@ final quotations = [
         externalId: '2f739b75-6376-46c0-9817-aec8dd29eab1',
         sku: SkuEntity(
           id: 6,
+          productId: 'abab5f2c-bf10-4559-9f39-ad29c854ea15',
           externalId: 'a0d2c457-fb5e-47cd-801b-aa8de598e0f5',
           code: '006',
           name: 'PRODUTO 006',
@@ -288,6 +509,7 @@ final quotations = [
         externalId: 'b1f33097-80f9-4bb8-8914-8e38a373aa9c',
         sku: SkuEntity(
           id: 7,
+          productId: 'afc854b8-a064-42f5-ba6b-db5963bf4091',
           externalId: '9c4a5771-d423-494c-bfdd-17e6dcc94d9f',
           code: '007',
           name: 'PRODUTO 007',
@@ -296,7 +518,7 @@ final quotations = [
           updateAt: _date,
         ),
         quantity: 3.0,
-        value: 60.70,
+        value: 55.36,
         status: true,
         createAt: _date,
         updateAt: _date,
@@ -306,6 +528,7 @@ final quotations = [
         externalId: '4c6f03d7-e3c7-43df-89ca-09f181e46d2d',
         sku: SkuEntity(
           id: 8,
+          productId: '82a9d50c-4503-4efe-a372-25d3d951dbe9',
           externalId: '36c875d9-53a0-43bd-83ba-6477a3285c2b',
           code: '008',
           name: 'PRODUTO 008',
@@ -314,7 +537,7 @@ final quotations = [
           updateAt: _date,
         ),
         quantity: 3.0,
-        value: 60.70,
+        value: 33.23,
         status: true,
         createAt: _date,
         updateAt: _date,

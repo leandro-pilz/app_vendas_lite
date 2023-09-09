@@ -14,7 +14,7 @@ final class QuotationEntity extends Entity {
 
   QuotationEntity({
     super.id,
-    required super.externalId,
+    super.externalId,
     required this.quotationNumber,
     required this.amount,
     required this.customer,

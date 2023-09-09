@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '/entities/customer_entity.dart';
 import '/entities/form_payment_entity.dart';
 import '/entities/payment_term_entity.dart';
+import '/entities/quotation_entity.dart';
 import '/ui/data.dart';
 import '/ui/utils/auto_complete_data.dart';
 import '/ui/utils/constants.dart';
@@ -68,7 +69,25 @@ class _QuotesPageState extends State<QuotesPage> {
     return AppScaffold(
       title: 'Cotações',
       usePaddingDefault: true,
-      onFloatActionButtonPressed: customerSelected != null ? () => context.goNamed(shoppingCartRouteName) : null,
+      onFloatActionButtonPressed: customerSelected != null
+          ? () {
+              final date = DateTime.now();
+              final quotation = QuotationEntity(
+                id: date.millisecondsSinceEpoch,
+                quotationNumber: '001',
+                amount: 0.0,
+                customer: customerSelected!,
+                formPayment: formPaymentSelected,
+                paymentTerm: paymentTermSelected,
+                status: true,
+                createAt: date,
+                updateAt: date,
+                items: [],
+              );
+
+              context.goNamed(shoppingCartRouteName, extra: quotation);
+            }
+          : null,
       iconFloatAction: Icons.add_shopping_cart,
       body: Column(
         children: [
@@ -122,16 +141,18 @@ class _QuotesPageState extends State<QuotesPage> {
             },
           ),
           const SizedBox(height: kMediumPadding),
-          Row(children: [
-            Text('$lQuotation realizadas', style: mediumW500Style),
-            Expanded(
-              child: Divider(
-                indent: 8.0,
-                color: Colors.black38,
-                height: 3.0,
+          const Row(
+            children: [
+              Text('$lQuotation realizadas', style: mediumW500Style),
+              Expanded(
+                child: Divider(
+                  indent: 8.0,
+                  color: Colors.black38,
+                  height: 3.0,
+                ),
               ),
-            ),
-          ],),
+            ],
+          ),
           const SizedBox(height: kSmallPadding),
           Expanded(
             child: ListViewCustom(

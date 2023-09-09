@@ -8,7 +8,7 @@ final class QuotationItemEntity extends Entity {
 
   QuotationItemEntity({
     super.id,
-    required super.externalId,
+    super.externalId,
     required this.sku,
     required this.quantity,
     required this.value,

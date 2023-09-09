@@ -18,13 +18,20 @@ class SearchFieldAppBar extends StatefulWidget {
 class _TextFormCustomState extends State<SearchFieldAppBar> {
   late Debouncer debouncer;
   late TextEditingController controller;
+  late FocusNode focusNode;
   late bool isShowClearIcon;
 
   @override
   void initState() {
     debouncer = Debouncer(milliseconds: kMediumDurationMilliSeconds);
     controller = TextEditingController();
+    focusNode = FocusNode();
     isShowClearIcon = false;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      Future.delayed(const Duration(milliseconds: kMediumDurationMilliSeconds), () {
+        focusNode.requestFocus();
+      });
+    });
     super.initState();
   }
 
@@ -32,6 +39,7 @@ class _TextFormCustomState extends State<SearchFieldAppBar> {
   void dispose() {
     debouncer.dispose();
     controller.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -41,6 +49,7 @@ class _TextFormCustomState extends State<SearchFieldAppBar> {
       height: kHeightSearchFieldAppbar,
       child: TextFormField(
         controller: controller,
+        focusNode: focusNode,
         textCapitalization: TextCapitalization.characters,
         onChanged: (value) {
           debouncer.run(() {
