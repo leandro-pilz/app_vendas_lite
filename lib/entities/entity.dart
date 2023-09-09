@@ -1,5 +1,5 @@
 abstract class Entity {
-  String? id;
+  int? id;
   String? externalId;
   bool? status;
   DateTime? createAt;

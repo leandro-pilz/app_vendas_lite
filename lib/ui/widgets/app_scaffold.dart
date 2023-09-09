@@ -79,10 +79,7 @@ class AppScaffold extends StatelessWidget {
     return Container(
       color: bodyBackgroundColor,
       padding: (usePaddingDefault ?? true)
-          ? const EdgeInsets.symmetric(
-              horizontal: kMediumPadding,
-              vertical: kMediumPadding,
-            )
+          ? const EdgeInsets.all(kSmallPadding)
           : null,
       child: body,
     );

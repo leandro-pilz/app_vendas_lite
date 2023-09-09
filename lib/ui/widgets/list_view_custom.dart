@@ -7,7 +7,7 @@ class ListViewCustom extends StatelessWidget {
   final List<dynamic> list;
   final ScrollController scrollController;
   final Widget Function(int index) child;
-  final bool? shrinkWrap, isProgress, enableBorder;
+  final bool? shrinkWrap, isProgress, enableBorder, useBottomSpace;
 
   const ListViewCustom({
     super.key,
@@ -17,6 +17,7 @@ class ListViewCustom extends StatelessWidget {
     this.shrinkWrap,
     this.isProgress,
     this.enableBorder,
+    this.useBottomSpace,
   });
 
   @override
@@ -37,7 +38,7 @@ class ListViewCustom extends StatelessWidget {
                   )
                 : null,
             child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: kHeightBottomListView),
+              padding: (useBottomSpace ?? false) ? const EdgeInsets.only(bottom: kHeightBottomListView) : null,
               controller: scrollController,
               shrinkWrap: shrinkWrap ?? false,
               itemCount: list.length,

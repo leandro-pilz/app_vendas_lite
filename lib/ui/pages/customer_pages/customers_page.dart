@@ -1,15 +1,13 @@
-import 'dart:developer';
-
-import 'package:app_vendas_lite/ui/utils/constants.dart';
-import 'package:app_vendas_lite/ui/widgets/list_view_custom.dart';
 import 'package:flutter/material.dart';
 
-import '../../data.dart';
-import '../../utils/infinity_scroll_listener.dart';
-import '../../utils/labels.dart';
-import '../../utils/text_style_utils.dart';
-import '../../utils/util.dart';
-import '../../widgets/app_scaffold.dart';
+import '/ui/data.dart';
+import '/ui/utils/constants.dart';
+import '/ui/utils/infinity_scroll_listener.dart';
+import '/ui/utils/labels.dart';
+import '/ui/utils/text_style_utils.dart';
+import '/ui/utils/util.dart';
+import '/ui/widgets/app_scaffold.dart';
+import '/ui/widgets/list_view_custom.dart';
 
 class CustomersPage extends StatefulWidget {
   const CustomersPage({super.key});
@@ -27,7 +25,6 @@ class _CustomersPageState extends State<CustomersPage> {
     isProgress = false;
     scrollController = InfinityScrollListener(
       onLoadMore: () {
-        log('CARREGAR MAIS INTENS...');
         setState(() {
           isProgress = true;
           _timeLoad();
@@ -53,6 +50,7 @@ class _CustomersPageState extends State<CustomersPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return AppScaffold(
       usePaddingDefault: false,
       useSearchField: true,
@@ -62,7 +60,7 @@ class _CustomersPageState extends State<CustomersPage> {
         scrollController: scrollController,
         child: (index) {
           return Container(
-            width: double.infinity,
+            width: size.width,
             color: listItemBackgroundColor(index: index),
             padding: const EdgeInsets.symmetric(vertical: kMediumPadding, horizontal: kSmallPadding),
             child: Column(

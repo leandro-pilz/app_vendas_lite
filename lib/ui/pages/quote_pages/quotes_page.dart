@@ -67,6 +67,7 @@ class _QuotesPageState extends State<QuotesPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Cotações',
+      usePaddingDefault: true,
       onFloatActionButtonPressed: customerSelected != null ? () => context.goNamed(shoppingCartRouteName) : null,
       iconFloatAction: Icons.add_shopping_cart,
       body: Column(
@@ -121,10 +122,21 @@ class _QuotesPageState extends State<QuotesPage> {
             },
           ),
           const SizedBox(height: kMediumPadding),
+          Row(children: [
+            Text('$lQuotation realizadas', style: mediumW500Style),
+            Expanded(
+              child: Divider(
+                indent: 8.0,
+                color: Colors.black38,
+                height: 3.0,
+              ),
+            ),
+          ],),
+          const SizedBox(height: kSmallPadding),
           Expanded(
             child: ListViewCustom(
               isProgress: isProgress,
-              enableBorder: true,
+              useBottomSpace: true,
               list: quotations,
               scrollController: scrollController,
               child: (index) {

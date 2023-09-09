@@ -1,4 +1,5 @@
 import 'package:app_vendas_lite/entities/customer_entity.dart';
+import 'package:app_vendas_lite/entities/sku_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -21,5 +22,23 @@ extension CustomerToString on CustomerEntity {
 extension DateFormatters on DateTime {
   String maskDateAndTime() {
     return DateFormat(_maskDateTime).format(this);
+  }
+}
+
+extension MoneyFormatter on double {
+  String formatCurrency() {
+    return NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$:', decimalDigits: 2).format(this);
+  }
+}
+
+extension DecimalFormatter on double {
+  String decimalFormatter() {
+    return NumberFormat("###.00").format(this);
+  }
+}
+
+extension SkuDisplayItemList on SkuEntity {
+  String toCodeAndName() {
+    return '$code - $name';
   }
 }

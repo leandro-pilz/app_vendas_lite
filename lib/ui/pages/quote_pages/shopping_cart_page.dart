@@ -25,8 +25,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: '',
-      // title: 'Carrinho',
+      title: 'Carrinho',
       body: <Widget>[
         const SearchProductShoppingCartScreen(),
         const ItemsShoppingCartScreen(),

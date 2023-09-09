@@ -1,6 +1,8 @@
 import 'package:app_vendas_lite/entities/form_payment_entity.dart';
 import 'package:app_vendas_lite/entities/payment_term_entity.dart';
 import 'package:app_vendas_lite/entities/quotation_entity.dart';
+import 'package:app_vendas_lite/entities/quotation_item_entity.dart';
+import 'package:app_vendas_lite/entities/sku_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 
 import '../entities/customer_entity.dart';
@@ -144,10 +146,12 @@ final _customerQuotation = CustomerEntity(
   updateAt: _date,
 );
 
+
 final quotations = [
   QuotationEntity(
     externalId: '6bc8f3bb-9c68-451d-8565-f6cd9bb35196',
     quotationNumber: '001',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -167,10 +171,157 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [
+      QuotationItemEntity(
+        id: 1,
+        externalId: '3dedffb7-7232-40e2-90ca-15079f4b8ffb',
+        sku: SkuEntity(
+          id: 1,
+          externalId: '1e9cf89e-85a5-4f11-8792-17d2c4b70453',
+          code: '001',
+          name: 'PRODUTO 001',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 1.0,
+        value: 100.0,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 2,
+        externalId: 'a2cf1fd9-558d-436e-a358-260775b7d0c2',
+        sku: SkuEntity(
+          id: 2,
+          externalId: '8fd80317-cf42-494b-98cc-b47555bf479f',
+          code: '002',
+          name: 'PRODUTO 002',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 2.0,
+        value: 133.21,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 3,
+        externalId: 'b3a6d67c-fb8b-49d1-8fe0-f54be672a888',
+        sku: SkuEntity(
+          id: 3,
+          externalId: '5e0168d6-fdce-490a-a9d5-5ae16e7d9a1b',
+          code: '003',
+          name: 'PRODUTO 003',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 3.0,
+        value: 222.20,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 4,
+        externalId: '316befc2-e57a-445e-8c57-43b917188083',
+        sku: SkuEntity(
+          id: 4,
+          externalId: '2d683432-e49d-4c9d-9572-eb80b81873bf',
+          code: '004',
+          name: 'PRODUTO 004',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 10.0,
+        value: 155.79,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 5,
+        externalId: '6a6e224d-3ff6-4f65-be1e-a48cd6defe86',
+        sku: SkuEntity(
+          id: 5,
+          externalId: '35eef52c-a087-4e73-b6d5-d66d84a544d9',
+          code: '005',
+          name: 'PRODUTO 005',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 5.0,
+        value: 75.69,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 6,
+        externalId: '2f739b75-6376-46c0-9817-aec8dd29eab1',
+        sku: SkuEntity(
+          id: 6,
+          externalId: 'a0d2c457-fb5e-47cd-801b-aa8de598e0f5',
+          code: '006',
+          name: 'PRODUTO 006',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 3.0,
+        value: 60.70,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 7,
+        externalId: 'b1f33097-80f9-4bb8-8914-8e38a373aa9c',
+        sku: SkuEntity(
+          id: 7,
+          externalId: '9c4a5771-d423-494c-bfdd-17e6dcc94d9f',
+          code: '007',
+          name: 'PRODUTO 007',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 3.0,
+        value: 60.70,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+      QuotationItemEntity(
+        id: 8,
+        externalId: '4c6f03d7-e3c7-43df-89ca-09f181e46d2d',
+        sku: SkuEntity(
+          id: 8,
+          externalId: '36c875d9-53a0-43bd-83ba-6477a3285c2b',
+          code: '008',
+          name: 'PRODUTO 008',
+          status: true,
+          createAt: _date,
+          updateAt: _date,
+        ),
+        quantity: 3.0,
+        value: 60.70,
+        status: true,
+        createAt: _date,
+        updateAt: _date,
+      ),
+    ],
   ),
   QuotationEntity(
     externalId: '57ba4da6-e33d-476d-ba06-baaa918621c4',
     quotationNumber: '002',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -190,10 +341,12 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
   ),
   QuotationEntity(
     externalId: '1dac600d-59ac-4989-a964-c057c439577b',
     quotationNumber: '003',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -213,10 +366,12 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
   ),
   QuotationEntity(
     externalId: '64e14e76-7493-47f4-9d72-d401bd81531f',
     quotationNumber: '004',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -236,10 +391,12 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
   ),
   QuotationEntity(
     externalId: '66f83947-f0d4-4955-9298-19e00b62567f',
     quotationNumber: '005',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -259,10 +416,12 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
   ),
   QuotationEntity(
     externalId: '832601b4-1662-4b61-bcb8-d60871d26529',
     quotationNumber: '006',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -282,10 +441,12 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
   ),
   QuotationEntity(
     externalId: '266640b8-ab8b-44dc-b2b4-46a51310e624',
     quotationNumber: '007',
+    amount: 0.0,
     customer: _customerQuotation,
     formPayment: FormPaymentEntity(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
@@ -305,5 +466,31 @@ final quotations = [
     status: true,
     createAt: _date,
     updateAt: _date,
+    items: [],
+  ),
+  QuotationEntity(
+    externalId: '7f9e769a-25e4-4776-a581-320fd38238f3',
+    quotationNumber: '008',
+    amount: 0.0,
+    customer: _customerQuotation,
+    formPayment: FormPaymentEntity(
+      externalId: 'c6753f69-b3b3-484b-91a8-f34aa66b435b',
+      name: 'Boleto',
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+      paymentTerms: [],
+    ),
+    paymentTerm: PaymentTermEntity(
+      externalId: '9bd929c8-4c0e-44ff-a4c3-da8a697d7a2c',
+      name: '30 dias',
+      status: true,
+      createAt: _date,
+      updateAt: _date,
+    ),
+    status: true,
+    createAt: _date,
+    updateAt: _date,
+    items: [],
   ),
 ];
