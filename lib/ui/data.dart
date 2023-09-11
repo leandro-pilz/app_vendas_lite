@@ -344,7 +344,7 @@ final skusList = [
     createAt: _date,
     updateAt: _date,
     price: PriceEntity(
-      id: 7,
+      id: 8,
       externalId: 'd967a461-b308-47c1-a24c-f6c545c1fd2a',
       value: 33.23,
       status: true,
@@ -352,7 +352,7 @@ final skusList = [
       updateAt: _date,
     ),
     stock: StockEntity(
-      id: 7,
+      id: 8,
       externalId: 'c89155a0-fd49-4a7a-9dfc-48b3370b5ef7',
       quantity: 30.0,
       status: true,

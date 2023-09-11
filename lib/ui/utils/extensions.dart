@@ -37,9 +37,9 @@ extension DecimalFormatter on double {
   }
 }
 
-extension StrintToInt on String {
-  int convertStringToInt() {
-    return int.tryParse(this) ?? 0;
+extension StrintToDouble on String {
+  double convertStringToDouble() {
+    return double.tryParse(this) ?? 0.0;
   }
 }
 

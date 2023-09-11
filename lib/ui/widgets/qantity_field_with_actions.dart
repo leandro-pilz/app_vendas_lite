@@ -10,8 +10,7 @@ class QuantityFieldWithActions extends StatefulWidget {
   final Function(double value, VoidCallback addDeleteAction) onChanged;
   final Function(VoidCallback removeDeleteAction) onDelete;
   final double? initialValue;
-  final bool? isSlim, showAddDeleteAction;
-  final int? postChangeExecuteMilliSeconds;
+  final bool? isSlim, showDeleteAction;
 
   const QuantityFieldWithActions({
     super.key,
@@ -20,8 +19,7 @@ class QuantityFieldWithActions extends StatefulWidget {
     required this.onDelete,
     this.initialValue,
     this.isSlim,
-    this.showAddDeleteAction,
-    this.postChangeExecuteMilliSeconds,
+    this.showDeleteAction,
   });
 
   @override
@@ -30,20 +28,19 @@ class QuantityFieldWithActions extends StatefulWidget {
 
 class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
   late TextEditingController controller;
-  late int multipleBatch, milliseconds;
-  late bool showAddDeleteAction;
+  late int multipleBatch;
+  late bool showDeleteAction;
   Timer? timer;
 
   @override
   void initState() {
-    showAddDeleteAction = widget.showAddDeleteAction ?? false;
+    showDeleteAction = widget.showDeleteAction ?? false;
     multipleBatch = widget.multipleBatch;
-    milliseconds = widget.postChangeExecuteMilliSeconds ?? kMediumDurationMilliSeconds;
     assert(multipleBatch > 0);
 
     controller = TextEditingController();
     if (widget.initialValue != null) {
-      controller.text = widget.initialValue!.toString();
+      controller.text = widget.initialValue!.toInt().toString();
     }
     super.initState();
   }
@@ -88,19 +85,19 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
                   controller.selectAll();
                 },
                 onChanged: (value) {
-                  _run(() {
-                    var value = controller.text.convertStringToInt();
+                  _run(kMediumDurationMilliSeconds, () {
+                    var value = controller.text.convertStringToDouble();
                     if (value == 0) {
-                      value = multipleBatch;
+                      value = multipleBatch.toDouble();
                     } else if (value % multipleBatch > 0) {
-                      value = ((value / multipleBatch).ceil()) * multipleBatch;
+                      value = (((value / multipleBatch).ceil()) * multipleBatch).toDouble();
                     }
 
                     controller.text = value.toInt().toString();
                     widget.onChanged(value.toDouble(), () {
-                      if (!showAddDeleteAction) {
+                      if (!showDeleteAction) {
                         setState(() {
-                          showAddDeleteAction = true;
+                          showDeleteAction = true;
                         });
                       }
                     });
@@ -109,8 +106,8 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
               ),
             ),
           ),
-          if (showAddDeleteAction) const SizedBox(width: kSizedBoxSmallSpace),
-          showAddDeleteAction
+          if (showDeleteAction) const SizedBox(width: kSizedBoxSmallSpace),
+          showDeleteAction
               ? ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.zero,
@@ -120,8 +117,9 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
                   ),
                   onPressed: () {
                     widget.onDelete(() {
+                      timer?.cancel();
                       setState(() {
-                        showAddDeleteAction = false;
+                        showDeleteAction = false;
                         controller.clear();
                       });
                     });
@@ -140,33 +138,38 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
   Widget _button({required String text, required bool isIncrement, required bool isPrefixButton}) {
     return FilledButton(
       onPressed: () {
-        var value = controller.text.convertStringToInt();
+        var value = controller.text.convertStringToDouble();
         if (!isIncrement && value == 0) {
           return;
         }
 
         if (value % multipleBatch > 0) {
           if (isIncrement) {
-            value = ((value / multipleBatch).ceil()) * multipleBatch;
+            value = (((value / multipleBatch).ceil()) * multipleBatch).toDouble();
           } else {
-            value = ((value - multipleBatch).toInt() / multipleBatch).ceil() * multipleBatch;
+            value = (((value - multipleBatch).toInt() / multipleBatch).ceil() * multipleBatch).toDouble();
           }
         } else {
           isIncrement ? value += multipleBatch : value -= multipleBatch;
         }
 
-        value = value > 0 ? value : multipleBatch;
+        value = value > 0 ? value : multipleBatch.toDouble();
         controller.text = value.toInt().toString();
-        widget.onChanged(value.toDouble(), () {
-          if (!showAddDeleteAction) {
-            setState(() {
-              showAddDeleteAction = true;
-            });
-          }
+
+        _run(kVeryFastDurationMilliSeconds, () {
+          widget.onChanged(value.toDouble(), () {
+            if (!showDeleteAction) {
+              setState(() {
+                showDeleteAction = true;
+              });
+            }
+          });
         });
       },
       style: FilledButton.styleFrom(
-        backgroundColor: Colors.blue,
+        elevation: 3.0,
+        foregroundColor: Colors.black87,
+        backgroundColor: Colors.white,
         padding: EdgeInsets.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: RoundedRectangleBorder(
@@ -182,7 +185,7 @@ class _QuantityFieldWithActionsState extends State<QuantityFieldWithActions> {
     );
   }
 
-  void _run(VoidCallback action) {
+  void _run(int milliseconds, VoidCallback action) {
     timer?.cancel();
     timer = Timer(Duration(milliseconds: milliseconds), action);
   }

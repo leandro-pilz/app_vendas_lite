@@ -65,7 +65,7 @@ class AppScaffold extends StatelessWidget {
           : null,
       bottomNavigationBar: (onNavigationSelected != null && currentPageIndex != null)
           ? NavigationBar(
-              labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+
               onDestinationSelected: (int index) {
                 onNavigationSelected!(index);
               },

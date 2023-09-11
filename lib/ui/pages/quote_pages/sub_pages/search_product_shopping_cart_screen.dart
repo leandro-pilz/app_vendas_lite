@@ -65,7 +65,7 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
         final sku = skusList[index];
 
         QuotationItemEntity? item;
-        quotation.items.where((element) => element.sku.externalId == sku.externalId).forEach((filter) {
+        quotation.items.where((element) => element.id == sku.id).forEach((filter) {
           item = filter;
         });
 
@@ -92,13 +92,22 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
                 initialValue: item?.quantity,
                 multipleBatch: sku.multipleBatch,
                 isSlim: true,
+                showDeleteAction: item != null,
                 onChanged: (quantity, addDeleteAction) {
                   // setState(() {
                   final date = DateTime.now();
-                  if (item == null) {
+
+                  bool isCreate = true;
+                  quotation.items.where((element) => element.id == sku.id).forEach((filter) {
+                    filter.quantity = quantity;
+                    filter.updateAt = date;
+                    isCreate = false;
+                  });
+
+                  if (isCreate) {
                     quotation.items.add(
                       QuotationItemEntity(
-                        id: date.millisecondsSinceEpoch,
+                        id: sku.id,
                         sku: sku,
                         quantity: quantity,
                         value: sku.price!.value,
@@ -107,12 +116,9 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
                         updateAt: date,
                       ),
                     );
-
-                    addDeleteAction();
-                  } else {
-                    item?.quantity = quantity;
-                    item?.updateAt = date;
                   }
+
+                  addDeleteAction();
                   // });
                 },
                 onDelete: (removeDeleteAction) {

@@ -1,3 +1,4 @@
+import 'package:app_vendas_lite/ui/data.dart';
 import 'package:flutter/material.dart';
 
 import '/ui/pages/quote_pages/sub_pages/checkout_shopping_cart_screen.dart';
@@ -43,10 +44,22 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         });
       },
       currentPageIndex: currentPageIndex,
-      navigationDestination: const <Widget>[
-        NavigationDestination(icon: Icon(Icons.search), label: lProductSearch),
-        NavigationDestination(icon: Icon(Icons.shopping_cart), label: lCartProducts),
-        NavigationDestination(icon: Icon(Icons.monetization_on_outlined), label: lCheckoutCart),
+      navigationDestination: <Widget>[
+        const NavigationDestination(icon: Icon(Icons.search), label: lProductSearch),
+        Stack(
+          children: [
+            const NavigationDestination(icon: Icon(Icons.shopping_cart), label: lCartProducts),
+            Visibility(
+              visible: widget.quotation.items.isNotEmpty,
+              child: Positioned(
+                top: 10.0,
+                right: 30.0,
+                child: Badge.count(count: widget.quotation.items.length, ),
+              ),
+            ),
+          ],
+        ),
+        const NavigationDestination(icon: Icon(Icons.monetization_on_outlined), label: lCheckoutCart),
       ],
     );
   }
