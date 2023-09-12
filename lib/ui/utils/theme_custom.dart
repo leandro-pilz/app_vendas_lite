@@ -62,4 +62,11 @@ final themeCustom = ThemeData(
       ),
     ),
   ),
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kBorderRadiusDefault)
+      )
+    ),
+  )
 );

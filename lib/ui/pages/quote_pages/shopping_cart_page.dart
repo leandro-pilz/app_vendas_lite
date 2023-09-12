@@ -61,7 +61,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
             child: <Widget>[
               SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
               ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
-              const CheckoutShoppingCartScreen(),
+              CheckoutShoppingCartScreen(quotation: widget.quotation),
             ][currentPageIndex],
           ),
         ],

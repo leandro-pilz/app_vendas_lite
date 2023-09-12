@@ -1,7 +1,8 @@
-import 'package:app_vendas_lite/ui/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
+import '/ui/router.dart';
 import 'ui/utils/theme_custom.dart';
 
 void main() {
@@ -21,6 +22,14 @@ class MyApp extends StatelessWidget {
       theme: themeCustom,
       // home: const HomePage(),
       routerConfig: router,
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }

@@ -7,8 +7,9 @@ class TextFieldCustom extends StatelessWidget {
   final String text;
   final String label;
   final VoidCallback? onTap;
+  final Widget? suffixIcon;
 
-  const TextFieldCustom({super.key, required this.text, required this.label, this.onTap});
+  const TextFieldCustom({super.key, required this.text, required this.label, this.onTap, this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class TextFieldCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(kBorderRadiusDefault),
             borderSide: const BorderSide(color: Colors.black87),
           ),
+          suffixIcon: suffixIcon,
         ),
         child: Text(text),
       ),

@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '/ui/utils/constants.dart';
+import '/ui/utils/debouncer.dart';
 import '/ui/utils/extensions.dart';
-import '../utils/constants.dart';
-import '../utils/debouncer.dart';
 
 class SearchFieldPage extends StatefulWidget {
   final Function(String value) onChanged;
   final VoidCallback onClear;
-  final String hint, label;
+  final String? hint, label;
   final IconData? prefixIcon;
   final TextEditingController? externalController;
   final FocusNode? focusNode;
+  final int? maxLines, maxLength;
+  final double? height;
 
   const SearchFieldPage({
     super.key,
     required this.onChanged,
     required this.onClear,
-    required this.hint,
-    required this.label,
+    this.hint,
+    this.label,
     this.prefixIcon,
     this.externalController,
     this.focusNode,
+    this.maxLines,
+    this.maxLength,
+    this.height,
   });
 
   @override
@@ -43,17 +48,19 @@ class _TextFormCustomState extends State<SearchFieldPage> {
   @override
   void dispose() {
     debouncer.dispose();
-    if (widget.externalController == null) {
-      controller.dispose();
-    }
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: kHeightLineListViewDefault,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: widget.height ?? kHeightSearchDefault,
+      ),
       child: TextFormField(
+        maxLines: widget.maxLines,
+        maxLength: widget.maxLength,
         controller: controller,
         focusNode: widget.focusNode,
         textCapitalization: TextCapitalization.characters,

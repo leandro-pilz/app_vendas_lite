@@ -1,10 +1,12 @@
-import 'package:app_vendas_lite/entities/customer_entity.dart';
-import 'package:app_vendas_lite/entities/sku_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '/entities/customer_entity.dart';
+import '/entities/sku_entity.dart';
+
 const String _maskDateTime = "dd/MM/yyyy HH:mm";
+const String _maskDate = "dd/MM/yyyy";
 
 extension TextEditingControllerExt on TextEditingController {
   void selectAll() {
@@ -22,6 +24,10 @@ extension CustomerToString on CustomerEntity {
 extension DateFormatters on DateTime {
   String maskDateAndTime() {
     return DateFormat(_maskDateTime).format(this);
+  }
+
+  String maskDate() {
+    return DateFormat(_maskDate).format(this);
   }
 }
 
