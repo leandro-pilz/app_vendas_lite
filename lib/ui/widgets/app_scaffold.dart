@@ -13,6 +13,7 @@ class AppScaffold extends StatelessWidget {
   final int? currentPageIndex;
   final Function(int index)? onNavigationSelected;
   final List<Widget>? navigationDestination;
+  final PreferredSizeWidget? bottom;
   final IconData? iconFloatAction;
   final VoidCallback? onClear;
 
@@ -30,6 +31,7 @@ class AppScaffold extends StatelessWidget {
     this.currentPageIndex,
     this.onNavigationSelected,
     this.navigationDestination,
+    this.bottom,
     this.iconFloatAction,
     this.onClear,
   });
@@ -54,6 +56,7 @@ class AppScaffold extends StatelessWidget {
                         }
                       },
                     ),
+              bottom: bottom,
             )
           : null,
       body: _body(),
@@ -65,7 +68,6 @@ class AppScaffold extends StatelessWidget {
           : null,
       bottomNavigationBar: (onNavigationSelected != null && currentPageIndex != null)
           ? NavigationBar(
-
               onDestinationSelected: (int index) {
                 onNavigationSelected!(index);
               },

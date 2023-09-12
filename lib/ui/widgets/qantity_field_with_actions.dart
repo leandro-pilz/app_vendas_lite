@@ -8,7 +8,7 @@ import '/ui/utils/extensions.dart';
 class QuantityFieldWithActions extends StatefulWidget {
   final int multipleBatch;
   final Function(double value, VoidCallback addDeleteAction) onChanged;
-  final Function(VoidCallback removeDeleteAction) onDelete;
+  final Function(VoidCallback notifyVisibleDeleteAction) onDelete;
   final double? initialValue;
   final bool? isSlim, showDeleteAction;
 

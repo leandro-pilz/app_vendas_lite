@@ -15,3 +15,10 @@ class _CheckoutShoppingCartScreenState extends State<CheckoutShoppingCartScreen>
     );
   }
 }
+
+
+//TODO: implementar
+/**
+ * 1 - Implementar o calendário;
+ * 2 - Campo para observação;
+ */

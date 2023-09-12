@@ -38,6 +38,7 @@ class ListViewCustom extends StatelessWidget {
                   )
                 : null,
             child: ListView.builder(
+              key: super.key,
               padding: (useBottomSpace ?? false) ? const EdgeInsets.only(bottom: kHeightBottomListView) : null,
               controller: scrollController,
               shrinkWrap: shrinkWrap ?? false,

@@ -14,8 +14,9 @@ import '../../../../entities/quotation_entity.dart';
 
 class SearchProductShoppingCartScreen extends StatefulWidget {
   final QuotationEntity quotation;
+  final VoidCallback onResetShoppingCart;
 
-  const SearchProductShoppingCartScreen({super.key, required this.quotation});
+  const SearchProductShoppingCartScreen({super.key, required this.quotation, required this.onResetShoppingCart});
 
   @override
   State<SearchProductShoppingCartScreen> createState() => _SearchProductShoppingCartScreenState();
@@ -37,6 +38,7 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
           _timeLoad();
         });
       },
+      onOffSetListener: (offSet) {},
     );
     super.initState();
   }
@@ -49,7 +51,6 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
 
   _timeLoad() async {
     await Future.delayed(const Duration(milliseconds: 500));
-
     setState(() {
       isProgress = false;
     });
@@ -60,6 +61,7 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
     final size = MediaQuery.sizeOf(context);
     return ListViewCustom(
       list: skusList,
+      isProgress: isProgress,
       scrollController: scrollController,
       child: (index) {
         final sku = skusList[index];
@@ -94,7 +96,6 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
                 isSlim: true,
                 showDeleteAction: item != null,
                 onChanged: (quantity, addDeleteAction) {
-                  // setState(() {
                   final date = DateTime.now();
 
                   bool isCreate = true;
@@ -119,14 +120,12 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
                   }
 
                   addDeleteAction();
-                  // });
+                  widget.onResetShoppingCart();
                 },
-                onDelete: (removeDeleteAction) {
-                  // setState(() {
+                onDelete: (notifyVisibleDeleteAction) {
                   quotation.items.remove(item);
-                  // });
-
-                  removeDeleteAction();
+                  notifyVisibleDeleteAction();
+                  widget.onResetShoppingCart();
                 },
               ),
             ],

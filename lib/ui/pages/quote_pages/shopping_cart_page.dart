@@ -1,11 +1,13 @@
-import 'package:app_vendas_lite/ui/data.dart';
 import 'package:flutter/material.dart';
 
 import '/ui/pages/quote_pages/sub_pages/checkout_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/items_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/search_product_shopping_cart_screen.dart';
+import '/ui/utils/constants.dart';
+import '/ui/utils/extensions.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/messages.dart';
+import '/ui/utils/text_style_utils.dart';
 import '/ui/widgets/app_scaffold.dart';
 import '../../../entities/quotation_entity.dart';
 
@@ -20,6 +22,7 @@ class ShoppingCartPage extends StatefulWidget {
 
 class _ShoppingCartPageState extends State<ShoppingCartPage> {
   late int currentPageIndex;
+  late List<Widget> views;
 
   @override
   void initState() {
@@ -33,11 +36,36 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
       title: 'Carrinho',
       hint: searchProducts,
       useSearchField: currentPageIndex == 0,
-      body: <Widget>[
-        SearchProductShoppingCartScreen(quotation: widget.quotation),
-        ItemsShoppingCartScreen(quotation: widget.quotation),
-        const CheckoutShoppingCartScreen(),
-      ][currentPageIndex],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: currentPageIndex != 0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$lAmount ${widget.quotation.amount.formatCurrency()}',
+                  style: veryLargeW600Style,
+                ),
+                const SizedBox(height: kSizedBoxMediumSpace),
+                const Divider(
+                  color: Colors.black38,
+                  height: 3.0,
+                ),
+                const SizedBox(height: kSizedBoxMediumSpace),
+              ],
+            ),
+          ),
+          Expanded(
+            child: <Widget>[
+              SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
+              ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
+              const CheckoutShoppingCartScreen(),
+            ][currentPageIndex],
+          ),
+        ],
+      ),
       onNavigationSelected: (index) {
         setState(() {
           currentPageIndex = index;
@@ -54,7 +82,9 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               child: Positioned(
                 top: 10.0,
                 right: 30.0,
-                child: Badge.count(count: widget.quotation.items.length, ),
+                child: Badge.count(
+                  count: widget.quotation.items.length,
+                ),
               ),
             ),
           ],

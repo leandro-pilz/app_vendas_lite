@@ -7,6 +7,8 @@ import 'quotation_item_entity.dart';
 final class QuotationEntity extends Entity {
   final String quotationNumber;
   double amount;
+  DateTime? deliveryDate;
+  String? note;
   final CustomerEntity customer;
   FormPaymentEntity? formPayment;
   PaymentTermEntity? paymentTerm;
@@ -17,6 +19,8 @@ final class QuotationEntity extends Entity {
     super.externalId,
     required this.quotationNumber,
     required this.amount,
+    this.deliveryDate,
+    this.note,
     required this.customer,
     this.formPayment,
     this.paymentTerm,

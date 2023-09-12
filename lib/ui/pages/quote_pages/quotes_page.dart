@@ -47,6 +47,7 @@ class _QuotesPageState extends State<QuotesPage> {
           _timeLoad();
         });
       },
+      onOffSetListener: (offSet) {},
     );
     super.initState();
   }
