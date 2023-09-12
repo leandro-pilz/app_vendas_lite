@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
@@ -11,7 +13,7 @@ class InkWellCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () => onTap(),
       customBorder: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kBorderRadiusDefault),
       ),

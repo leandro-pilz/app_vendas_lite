@@ -159,7 +159,7 @@ class _QuotesPageState extends State<QuotesPage> {
             child: ListViewCustom(
               isProgress: isProgress,
               useBottomSpace: true,
-              list: quotations,
+              list: customerSelected == null ? [] : quotations,
               scrollController: scrollController,
               child: (index) {
                 return Container(

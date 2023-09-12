@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '/entities/quotation_entity.dart';
 import '/ui/utils/constants.dart';
-import '/ui/utils/extensions.dart';
 import '/ui/utils/labels.dart';
 import '/ui/widgets/filled_button_custom.dart';
 import '/ui/widgets/seach_field_page.dart';
-import '/ui/widgets/text_field_custom.dart';
-import '../../../../entities/quotation_entity.dart';
+import '/ui/widgets/show_calendar_custom.dart';
 
 class CheckoutShoppingCartScreen extends StatefulWidget {
   final QuotationEntity quotation;
@@ -43,13 +42,10 @@ class _CheckoutShoppingCartScreenState extends State<CheckoutShoppingCartScreen>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextFieldCustom(
-          text: widget.quotation.deliveryDate!.maskDate(),
+        ShowCalendarCustom(
+          onDateChanged: (date) => widget.quotation.deliveryDate = date,
+          initialDate: widget.quotation.deliveryDate,
           label: lDeliveryDate,
-          suffixIcon: IconButton(
-            onPressed: () => _showCalendar(context),
-            icon: const Icon(Icons.calendar_month),
-          ),
         ),
         const SizedBox(height: kSizedBoxMediumSpace),
         SearchFieldPage(
@@ -70,21 +66,5 @@ class _CheckoutShoppingCartScreenState extends State<CheckoutShoppingCartScreen>
         FilledButtonCustom(title: lGenerateOrder, onPressed: () {}),
       ],
     );
-  }
-
-  void _showCalendar(BuildContext context) async {
-    final result = await showDatePicker(
-      context: context,
-      initialDate: widget.quotation.deliveryDate!,
-      firstDate: firstDate,
-      lastDate: lastDate,
-      initialEntryMode: DatePickerEntryMode.calendarOnly,
-    );
-
-    if (result != null) {
-      setState(() {
-        widget.quotation.deliveryDate = result;
-      });
-    }
   }
 }

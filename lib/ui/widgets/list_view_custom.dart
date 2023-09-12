@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '/ui/utils/constants.dart';
+import '/ui/utils/messages.dart';
+import '/ui/utils/text_style_utils.dart';
 import 'circular_progress_indicator_custom.dart';
 
 class ListViewCustom extends StatelessWidget {
@@ -8,6 +10,7 @@ class ListViewCustom extends StatelessWidget {
   final ScrollController scrollController;
   final Widget Function(int index) child;
   final bool? shrinkWrap, isProgress, enableBorder, useBottomSpace;
+  final String? textNotFoundData;
 
   const ListViewCustom({
     super.key,
@@ -18,6 +21,7 @@ class ListViewCustom extends StatelessWidget {
     this.isProgress,
     this.enableBorder,
     this.useBottomSpace,
+    this.textNotFoundData,
   });
 
   @override
@@ -46,13 +50,19 @@ class ListViewCustom extends StatelessWidget {
               itemBuilder: (_, index) => child(index),
             ),
           ),
-          (isProgress ?? false)
-              ? Container(
-                  alignment: Alignment.bottomCenter,
-                  margin: const EdgeInsets.only(bottom: kLargeMargin),
-                  child: const CircularProgressIndicatorCustom(),
-                )
-              : const SizedBox.shrink()
+          if (list.isEmpty && !(isProgress ?? false))
+            Center(
+              child: Text(
+                textNotFoundData ?? noDataFound,
+                style: largeW500Style,
+              ),
+            ),
+          if (list.isNotEmpty && (isProgress ?? false))
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: const EdgeInsets.only(bottom: kLargeMargin),
+              child: const CircularProgressIndicatorCustom(),
+            ),
         ],
       ),
     );

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
       crossAxisCount: 2,
       crossAxisSpacing: kSmallAxisSpacing,
       mainAxisSpacing: kSmallAxisSpacing,
-      childAspectRatio: 0.9,
+      childAspectRatio: 1.1,
       padding: const EdgeInsets.all(kMediumPadding),
       children: [
         _card(

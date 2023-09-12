@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/entities/quotation_entity.dart';
 import '/ui/pages/quote_pages/sub_pages/checkout_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/items_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/search_product_shopping_cart_screen.dart';
@@ -9,7 +10,6 @@ import '/ui/utils/labels.dart';
 import '/ui/utils/messages.dart';
 import '/ui/utils/text_style_utils.dart';
 import '/ui/widgets/app_scaffold.dart';
-import '../../../entities/quotation_entity.dart';
 
 class ShoppingCartPage extends StatefulWidget {
   final QuotationEntity quotation;

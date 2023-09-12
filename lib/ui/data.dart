@@ -141,7 +141,7 @@ final formPayments = [
 
 final _customerQuotation = CustomerEntity(
   externalId: 'b65ade5a-64a9-4c52-bd1a-b0fb743500d1',
-  name: 'Rodrigo Neves Ramos',
+  name: 'XXX XXXX XXXX XXXX',
   cpfCnpj: '97.707.242/0001-51',
   status: true,
   createAt: _date,
