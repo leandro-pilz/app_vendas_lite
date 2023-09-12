@@ -30,6 +30,12 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     super.initState();
   }
 
+  void _sumQuoteAmount() {
+    setState(() {
+      widget.quotation.sumAmount();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -59,8 +65,8 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
           ),
           Expanded(
             child: <Widget>[
-              SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
-              ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => setState(() {})),
+              SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
+              ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
               CheckoutShoppingCartScreen(quotation: widget.quotation),
             ][currentPageIndex],
           ),

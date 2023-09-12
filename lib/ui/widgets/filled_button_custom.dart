@@ -15,7 +15,7 @@ class FilledButtonCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return SizedBox(
-      height: kHeightButtoDefault,
+      height: kHeightButtonDefault,
       width: size.width,
       child: FilledButton(
         style: FilledButton.styleFrom(

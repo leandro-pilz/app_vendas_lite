@@ -57,7 +57,6 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    quotation.sumAmount();
     return ListViewCustom(
       list: quotation.items,
       scrollController: scrollController,
@@ -94,8 +93,10 @@ class _ItemsShoppingCartScreenState extends State<ItemsShoppingCartScreen> {
                 showDeleteAction: true,
                 isSlim: true,
                 onChanged: (value, addDeleteAction) {
-                  item.quantity = value;
-                  widget.onResetShoppingCart();
+                  setState(() {
+                    item.quantity = value;
+                    widget.onResetShoppingCart();
+                  });
                 },
                 onDelete: (notifyVisibleDeleteAction) {
                   setState(() {
