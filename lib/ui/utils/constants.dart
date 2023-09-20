@@ -1,7 +1,7 @@
 //Elevation
 const double kSmallElevation = 4.0;
 const double kMediumElevation = 8.0;
-const double kLargeElevation = 12.0;
+const double kLargeElevation = 16.0;
 
 //FontSize
 const double kSmallFontSize = 12.0;
@@ -37,6 +37,7 @@ const double kVeryLargeMargin = 24.0;
 const double kSizedBoxVerySmallSpace = 4.0;
 const double kSizedBoxSmallSpace = 8.0;
 const double kSizedBoxMediumSpace = 16.0;
+const double kSizedBoxLargeSpace = 24.0;
 
 //Height
 const double kHeightSearchFieldAppbar = 42.0;
@@ -44,7 +45,7 @@ const double kHeightSearchDefault = 56.0;
 const double kHeightSearchScrollInfinite = 150.0;
 const double kHeightLineListViewDefault = 56.0;
 const double kHeightBottomListView = 80.0;
-const double kHeightButtonDefault = 48.0;
+const double kHeightButtonDefault = 56.0;
 
 //Durations
 const kVeryFastDurationMilliSeconds = 300;

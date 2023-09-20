@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '/entities/quotation_entity.dart';
@@ -11,6 +13,7 @@ import '/ui/utils/text_style_utils.dart';
 import '/ui/utils/util.dart';
 import '/ui/widgets/list_view_custom.dart';
 import '/ui/widgets/qantity_field_with_actions.dart';
+import '../../app_lifecycle.dart';
 
 class SearchProductShoppingCartScreen extends StatefulWidget {
   final QuotationEntity quotation;
@@ -22,7 +25,7 @@ class SearchProductShoppingCartScreen extends StatefulWidget {
   State<SearchProductShoppingCartScreen> createState() => _SearchProductShoppingCartScreenState();
 }
 
-class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingCartScreen> {
+class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingCartScreen> implements NotifyLifeCycle {
   late bool isProgress;
   late InfinityScrollListener scrollController;
   late QuotationEntity quotation;
@@ -133,5 +136,10 @@ class _SearchProductShoppingCartScreenState extends State<SearchProductShoppingC
         );
       },
     );
+  }
+
+  @override
+  void onShow() {
+    log('ON SHOW FOI DISPARADO');
   }
 }

@@ -64,7 +64,18 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
             ),
           ),
           Expanded(
-            child: <Widget>[
+            child:
+
+                // IndexedStack(
+                //   index: currentPageIndex,
+                //   children: [
+                //     SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
+                //     ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
+                //     CheckoutShoppingCartScreen(quotation: widget.quotation),
+                //   ],
+                // )
+
+                <Widget>[
               SearchProductShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
               ItemsShoppingCartScreen(quotation: widget.quotation, onResetShoppingCart: () => _sumQuoteAmount()),
               CheckoutShoppingCartScreen(quotation: widget.quotation),

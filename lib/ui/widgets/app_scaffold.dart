@@ -39,26 +39,28 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: (useAppBar ?? true)
-          ? AppBar(
-              title: !(useSearchField ?? false)
-                  ? Text(title ?? '')
-                  : SearchFieldAppBar(
-                      hint: hint ?? '',
-                      onChanged: (value) {
-                        if (onChanged != null) {
-                          onChanged!(value);
-                        }
-                      },
-                      onClear: () {
-                        if (onClear != null) {
-                          onClear!();
-                        }
-                      },
-                    ),
-              bottom: bottom,
-            )
-          : null,
+      appBar: AppBar(
+        elevation: (useAppBar ?? false) ? kLargeElevation : 0.0,
+        backgroundColor: !(useAppBar ?? false) ? Colors.white : null,
+        title: (useAppBar ?? false)
+            ? !(useSearchField ?? false)
+                ? Text(title ?? '')
+                : SearchFieldAppBar(
+                    hint: hint ?? '',
+                    onChanged: (value) {
+                      if (onChanged != null) {
+                        onChanged!(value);
+                      }
+                    },
+                    onClear: () {
+                      if (onClear != null) {
+                        onClear!();
+                      }
+                    },
+                  )
+            : null,
+        bottom: bottom,
+      ),
       body: _body(),
       floatingActionButton: onFloatActionButtonPressed != null
           ? FloatingActionButton(

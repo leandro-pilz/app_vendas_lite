@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
-import '../utils/labels.dart';
 import '../utils/text_style_utils.dart';
 
 class FilledButtonCustom extends StatelessWidget {
@@ -9,7 +8,6 @@ class FilledButtonCustom extends StatelessWidget {
   final VoidCallback onPressed;
 
   const FilledButtonCustom({super.key, required this.title, required this.onPressed});
-
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class FilledButtonCustom extends StatelessWidget {
           textStyle: largeW500Style,
         ),
         onPressed: onPressed,
-        child: const Text(lGenerateOrder),
+        child: Text(title),
       ),
     );
   }

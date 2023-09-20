@@ -1,3 +1,4 @@
+import 'package:app_vendas_lite/ui/pages/auth_pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +15,7 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   navigatorKey: _navigatorKey,
-  initialLocation: '/',
+  initialLocation: '/auth',
   routes: [
     GoRoute(
       name: splashRouteName,
@@ -23,6 +24,22 @@ final router = GoRouter(
         return CustomTransitionPage(
           key: state.pageKey,
           child: const SplashPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),
+              child: child,
+            );
+          },
+        );
+      },
+    ),
+    GoRoute(
+      name: authRouteName,
+      path: '/auth',
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: const AuthPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),
@@ -89,7 +106,7 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               key: state.pageKey,
-              child: CustomersPage(),
+              child: const CustomersPage(),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return FadeTransition(
                   opacity: CurveTween(curve: Curves.easeInOutSine).animate(animation),

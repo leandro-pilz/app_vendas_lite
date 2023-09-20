@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
+const veryVeryLargeW600Style = TextStyle(fontSize: kVeryVeryLargeFontSize, fontWeight: FontWeight.w600);
+const veryVeryLargeW500Style = TextStyle(fontSize: kVeryVeryLargeFontSize, fontWeight: FontWeight.w500);
+const veryVeryLargeStyle = TextStyle(fontSize: kVeryVeryLargeFontSize);
+
 const veryLargeW600Style = TextStyle(fontSize: kVeryLargeFontSize, fontWeight: FontWeight.w600);
 const veryLargeW500Style = TextStyle(fontSize: kVeryLargeFontSize, fontWeight: FontWeight.w500);
 const veryLargeStyle = TextStyle(fontSize: kVeryLargeFontSize);
