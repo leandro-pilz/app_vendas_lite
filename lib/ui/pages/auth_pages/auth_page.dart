@@ -27,13 +27,17 @@ class _AuthPageState extends State<AuthPage> {
       child: ListView(
         shrinkWrap: true,
         children: [
-          const Text('Login',style: veryVeryLargeW600Style, textAlign: TextAlign.center,),
+          const Text(
+            'Login',
+            style: veryVeryLargeW600Style,
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: kSizedBoxLargeSpace),
           InputTextFormFieldCustom(label: 'Login', onChanged: (value) {}),
           const SizedBox(height: kSizedBoxLargeSpace),
           PassWordField(controller: TextEditingController(), label: 'Senha'),
           const SizedBox(height: kSizedBoxLargeSpace),
-          FilledButtonCustom(title: 'Entrar', onPressed: (){}),
+          FilledButtonCustom(title: 'Entrar', onPressed: () {}),
         ],
       ),
     );
