@@ -85,7 +85,11 @@ class _PassWordFieldState extends State<PassWordField> {
         label: Text(widget.label, style: const TextStyle(fontSize: kLargeFontSize, color: Colors.black54)),
         prefixIcon: (widget.prefixIcon ?? false) ? const Icon(Icons.lock) : null,
         suffixIcon: IconButton(
-          icon: Icon(isVisibility ? Icons.visibility_off : Icons.visibility),
+          key: const ValueKey('5445684f-bc90-4319-aa6e-c41e94259473'),
+          icon: Icon(
+            key: const ValueKey('5ed7f810-6169-4e1a-b10e-87208b62c1f8'),
+            isVisibility ? Icons.visibility_off : Icons.visibility,
+          ),
           onPressed: () {
             setState(() {
               isVisibility = !isVisibility;
