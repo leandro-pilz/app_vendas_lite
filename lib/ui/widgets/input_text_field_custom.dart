@@ -4,6 +4,8 @@ import '/ui/utils/extensions.dart';
 import '../utils/constants.dart';
 import '../utils/debouncer.dart';
 
+const inputTextFormFieldClearTextIconKey = ValueKey('aec54743-c1a4-4ca7-bc18-4152d25d65b5');
+
 class InputTextFormFieldCustom extends StatefulWidget {
   final String label;
   final Function(String value) onChanged;
@@ -96,7 +98,7 @@ class _InputTextFormFieldCustomState extends State<InputTextFormFieldCustom> {
           label: Text(widget.label, style: const TextStyle(fontSize: kLargeFontSize, color: Colors.black54)),
           suffixIcon: isShowClearIcon
               ? IconButton(
-                  key: const ValueKey('aec54743-c1a4-4ca7-bc18-4152d25d65b5'),
+                  key: inputTextFormFieldClearTextIconKey,
                   icon: const Icon(Icons.clear),
                   onPressed: () {
                     setState(() {

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
 
+const passWordIconVisiblePasswordKey = ValueKey('5445684f-bc90-4319-aa6e-c41e94259473');
+
 class PassWordField extends StatefulWidget {
   final TextEditingController controller;
   final String label;
@@ -85,9 +87,8 @@ class _PassWordFieldState extends State<PassWordField> {
         label: Text(widget.label, style: const TextStyle(fontSize: kLargeFontSize, color: Colors.black54)),
         prefixIcon: (widget.prefixIcon ?? false) ? const Icon(Icons.lock) : null,
         suffixIcon: IconButton(
-          key: const ValueKey('5445684f-bc90-4319-aa6e-c41e94259473'),
+          key: passWordIconVisiblePasswordKey,
           icon: Icon(
-            key: const ValueKey('5ed7f810-6169-4e1a-b10e-87208b62c1f8'),
             isVisibility ? Icons.visibility_off : Icons.visibility,
           ),
           onPressed: () {

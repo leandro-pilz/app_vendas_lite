@@ -1,22 +1,24 @@
 import 'package:app_vendas_lite/ui/pages/auth_pages/auth_page.dart';
+import 'package:app_vendas_lite/ui/widgets/input_text_field_custom.dart';
+import 'package:app_vendas_lite/ui/widgets/password_field_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final inputLoginWidget = find.byKey(const ValueKey('938497b7-8665-4d97-acf5-5432d690f8fc'));
-  final passwordInputWidget = find.byKey(const ValueKey('e38a1e20-a36e-4b76-a0cf-7b5e8c2d2c83'));
+  final inputLoginWidget = find.byKey(authPageInputTextFormFieldKey);
+  final passwordInputWidget = find.byKey(authPagePassWordFieldKey);
 
   testWidgets('Validar se todos os widgets iniciais estão presentes na tela.', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(home: AuthPage()));
 
     //Widgets de tela.
-    final centerWidget = find.byKey(const ValueKey('861db839-bccd-4108-bd68-0da68b51c290'));
-    final listViewWidget = find.byKey(const ValueKey('d6779fa9-ed65-4bc3-bfd1-363ed735dcc8'));
-    final textViewLoginWidget = find.byKey(const ValueKey('9e9af5af-bb2a-4370-b45b-34ccc2829b7d'));
-    final sizedBoxAfterTextLogin = find.byKey(const ValueKey('49427504-c16f-4b2b-8d25-8d1779459049'));
-    final sizedBoxAfterInputTextLogin = find.byKey(const ValueKey('70db5c58-9636-4503-a0e2-8b92c16eddb1'));
-    final sizedBoxAfterPasswordInputText = find.byKey(const ValueKey('247cc076-41bd-4587-a176-9d35c4f43ea5'));
-    final filledButtonWidget = find.byKey(const ValueKey('1e9919e7-c9d4-4c8b-8012-7ead91d9b0b4'));
+    final centerWidget = find.byKey(authPageCenterBodyKey);
+    final listViewWidget = find.byKey(authPageListViewKey);
+    final textViewLoginWidget = find.byKey(authPageTextLoginKey);
+    final sizedBoxAfterTextLogin = find.byKey(authPageSizeBoxAfterTextLoginKey);
+    final sizedBoxAfterInputTextLogin = find.byKey(authPageSizeBoxAfterInputTextFormFieldKey);
+    final sizedBoxAfterPasswordInputText = find.byKey(authPageSizeBoxAfterPassWordFieldKey);
+    final filledButtonWidget = find.byKey(authPageFilledButtonCustomKey);
 
     //Expected
     expect(centerWidget, findsOneWidget);
@@ -38,7 +40,7 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: AuthPage()));
 
     //Login field testes.
-    final iconButton = find.byKey(const ValueKey('aec54743-c1a4-4ca7-bc18-4152d25d65b5'));
+    final iconButton = find.byKey(inputTextFormFieldClearTextIconKey);
     await tester.enterText(inputLoginWidget, 'hi');
     await tester.pump();
     await tester.tap(iconButton);
@@ -53,7 +55,7 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: AuthPage()));
 
     //Login field testes.
-    final iconButton = find.byKey(const ValueKey('5445684f-bc90-4319-aa6e-c41e94259473'));
+    final iconButton = find.byKey(passWordIconVisiblePasswordKey);
     final iconVisibility = find.byIcon(Icons.visibility);
     final visibilityOff = find.byIcon(Icons.visibility_off);
     await tester.enterText(passwordInputWidget, '@123Senha');
