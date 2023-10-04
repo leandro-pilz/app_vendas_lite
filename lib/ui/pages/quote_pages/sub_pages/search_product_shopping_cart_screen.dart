@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '/ui/data.dart';
 import '/ui/utils/constants.dart';
-import '../../../../core/extensions.dart';
+import '../../../extensions.dart';
 import '/ui/utils/infinity_scroll_listener.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/text_style_utils.dart';

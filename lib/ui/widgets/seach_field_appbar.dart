@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/extensions.dart';
+import '../extensions.dart';
 import '../utils/constants.dart';
 import '../utils/debouncer.dart';
 

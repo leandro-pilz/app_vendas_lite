@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/ui/utils/constants.dart';
 import '/ui/utils/debouncer.dart';
-import '../../core/extensions.dart';
+import '../extensions.dart';
 
 class SearchFieldPage extends StatefulWidget {
   final Function(String value) onChanged;

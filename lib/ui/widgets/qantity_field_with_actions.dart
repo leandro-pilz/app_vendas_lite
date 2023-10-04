@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '/ui/utils/constants.dart';
-import '../../core/extensions.dart';
+import '../extensions.dart';
 
 class QuantityFieldWithActions extends StatefulWidget {
   final int multipleBatch;
