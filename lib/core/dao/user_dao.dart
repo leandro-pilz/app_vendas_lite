@@ -1,9 +1,8 @@
-import 'package:app_vendas_lite/adapters/user_adapter.dart';
-import 'package:app_vendas_lite/database/dao/dao.dart';
-import 'package:app_vendas_lite/entities/entity.dart';
-import 'package:app_vendas_lite/entities/user_entity.dart';
-
+import '/core/adapters/user_adapter.dart';
+import '/core/entities/entity.dart';
+import '/core/entities/user_entity.dart';
 import '../data_base_helper.dart';
+import 'dao.dart';
 
 class UsuarioDao implements Dao {
   final DataBaseHelper database;

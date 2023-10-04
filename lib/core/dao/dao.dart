@@ -1,4 +1,4 @@
-import 'package:app_vendas_lite/entities/entity.dart';
+import '../../core/entities/entity.dart';
 
 abstract interface class Dao<S extends Entity> {
   Future<S> findBy({required Map<String, dynamic> params});

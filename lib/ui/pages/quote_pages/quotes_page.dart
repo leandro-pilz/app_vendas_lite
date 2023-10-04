@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '/entities/customer_entity.dart';
-import '/entities/form_payment_entity.dart';
-import '/entities/payment_term_entity.dart';
-import '/entities/quotation_entity.dart';
 import '/ui/data.dart';
 import '/ui/utils/auto_complete_data.dart';
 import '/ui/utils/constants.dart';
 import '/ui/utils/dropdown_data.dart';
-import '/ui/utils/extensions.dart';
+import '../../../core/extensions.dart';
 import '/ui/utils/infinity_scroll_listener.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/routes_name_app.dart';
@@ -19,6 +15,10 @@ import '/ui/widgets/app_scaffold.dart';
 import '/ui/widgets/auto_complete_custom.dart';
 import '/ui/widgets/dropdown_custom.dart';
 import '/ui/widgets/list_view_custom.dart';
+import '../../../core/entities/customer_entity.dart';
+import '../../../core/entities/form_payment_entity.dart';
+import '../../../core/entities/payment_term_entity.dart';
+import '../../../core/entities/quotation_entity.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({super.key});

@@ -1,4 +1,4 @@
-import 'package:app_vendas_lite/entities/user_entity.dart';
+import '../entities/user_entity.dart';
 
 class UsuarioAdapter {
   static User mapParaEntidade({required Map<String, dynamic> map}) {

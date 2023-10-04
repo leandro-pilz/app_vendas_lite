@@ -1,5 +1,3 @@
-import '/entities/entity.dart';
-
 final class DropDownData {
   final String id;
   final String title;

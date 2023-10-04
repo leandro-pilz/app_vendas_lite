@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '/entities/quotation_entity.dart';
 import '/ui/utils/constants.dart';
-import '/ui/utils/extensions.dart';
+import '../../../../core/extensions.dart';
 import '/ui/utils/infinity_scroll_listener.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/text_style_utils.dart';
 import '/ui/utils/util.dart';
 import '/ui/widgets/list_view_custom.dart';
 import '/ui/widgets/qantity_field_with_actions.dart';
+import '../../../../core/entities/quotation_entity.dart';
 
 class ItemsShoppingCartScreen extends StatefulWidget {
   final QuotationEntity quotation;

@@ -1,8 +1,7 @@
 import 'package:app_vendas_lite/ui/pages/auth_pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '/entities/quotation_entity.dart';
+import '../core/entities/quotation_entity.dart';
 import '/ui/pages/customer_pages/customers_page.dart';
 import '/ui/pages/home_page.dart';
 import '/ui/pages/order_pages/orders_page.dart';

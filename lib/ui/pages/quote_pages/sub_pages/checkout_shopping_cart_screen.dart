@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '/entities/quotation_entity.dart';
 import '/ui/utils/constants.dart';
 import '/ui/utils/labels.dart';
 import '/ui/widgets/filled_button_custom.dart';
 import '/ui/widgets/seach_field_page.dart';
 import '/ui/widgets/show_calendar_custom.dart';
+import '../../../../core/entities/quotation_entity.dart';
 
 class CheckoutShoppingCartScreen extends StatefulWidget {
   final QuotationEntity quotation;

@@ -1,13 +1,13 @@
-import 'package:app_vendas_lite/entities/form_payment_entity.dart';
-import 'package:app_vendas_lite/entities/payment_term_entity.dart';
-import 'package:app_vendas_lite/entities/price_entity.dart';
-import 'package:app_vendas_lite/entities/quotation_entity.dart';
-import 'package:app_vendas_lite/entities/quotation_item_entity.dart';
-import 'package:app_vendas_lite/entities/sku_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 
-import '../entities/customer_entity.dart';
-import '../entities/stock_entity.dart';
+import '../core/entities/customer_entity.dart';
+import '../core/entities/form_payment_entity.dart';
+import '../core/entities/payment_term_entity.dart';
+import '../core/entities/price_entity.dart';
+import '../core/entities/quotation_entity.dart';
+import '../core/entities/quotation_item_entity.dart';
+import '../core/entities/sku_entity.dart';
+import '../core/entities/stock_entity.dart';
 
 final _date = DateTime.now();
 

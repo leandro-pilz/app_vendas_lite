@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '/entities/quotation_entity.dart';
+import '../../../core/entities/quotation_entity.dart';
 import '/ui/pages/quote_pages/sub_pages/checkout_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/items_shopping_cart_screen.dart';
 import '/ui/pages/quote_pages/sub_pages/search_product_shopping_cart_screen.dart';
 import '/ui/utils/constants.dart';
-import '/ui/utils/extensions.dart';
+import '../../../core/extensions.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/messages.dart';
 import '/ui/utils/text_style_utils.dart';

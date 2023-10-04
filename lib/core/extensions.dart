@@ -2,8 +2,8 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '/entities/customer_entity.dart';
-import '/entities/sku_entity.dart';
+import 'entities/customer_entity.dart';
+import 'entities/sku_entity.dart';
 
 const String _maskDateTime = "dd/MM/yyyy HH:mm";
 const String _maskDate = "dd/MM/yyyy";

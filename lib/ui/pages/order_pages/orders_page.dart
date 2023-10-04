@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '/entities/customer_entity.dart';
 import '/ui/data.dart';
 import '/ui/utils/auto_complete_data.dart';
 import '/ui/utils/constants.dart';
-import '/ui/utils/extensions.dart';
+import '../../../core/extensions.dart';
 import '/ui/utils/infinity_scroll_listener.dart';
 import '/ui/utils/labels.dart';
 import '/ui/utils/messages.dart';
@@ -14,6 +13,7 @@ import '/ui/widgets/app_scaffold.dart';
 import '/ui/widgets/auto_complete_custom.dart';
 import '/ui/widgets/list_view_custom.dart';
 import '/ui/widgets/show_calendar_custom.dart';
+import '../../../core/entities/customer_entity.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({super.key});
