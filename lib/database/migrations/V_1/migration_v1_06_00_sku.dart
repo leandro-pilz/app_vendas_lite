@@ -6,6 +6,7 @@ void createTableUserV1_06_00_Sku({required Batch batch}) {
       (
           id          integer             not null constraint sku_pk primary key autoincrement,
           usuario_id  integer             not null constraint produto_fk_usuario references usuario,
+          id_externo  text                not null constraint sku_uk_id_externo unique on conflict rollback,
           cod_produto text                not null,
           cod_sku     text                not null,
           nome        text collate NOCASE not null,

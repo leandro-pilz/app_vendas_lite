@@ -6,6 +6,7 @@ void createTableUserV1_03_00_Cliente({required Batch batch}) {
       (
           id          integer             not null constraint cliente_pk primary key autoincrement,
           ususario_id integer             not null constraint cliente_fk_usuario references usuario,
+          id_externo  text                not null constraint cliente_uk_id_externo unique on conflict rollback,
           cpf_cnpj    text                not null,
           nome        text collate NOCASE not null,
           email       text,

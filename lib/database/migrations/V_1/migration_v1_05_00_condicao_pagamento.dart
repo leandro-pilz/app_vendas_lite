@@ -6,6 +6,7 @@ void createTableUserV1_05_00_CondicaoPagamento({required Batch batch}) {
       (
           id                 integer             not null constraint condicao_pagamento_pk primary key autoincrement,
           forma_pagamento_id integer             not null constraint condicao_pagamento_fk_forma_pagamento references forma_pagamento,
+          id_externo         text                not null constraint condicao_pagamento_uk_id_externo unique on conflict rollback,
           codigo             text,
           nome               text collate NOCASE not null,
           situacao           integer             not null,
