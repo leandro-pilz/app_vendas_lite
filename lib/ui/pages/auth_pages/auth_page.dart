@@ -6,6 +6,8 @@ import '/ui/widgets/app_scaffold.dart';
 import '/ui/widgets/filled_button_custom.dart';
 import '/ui/widgets/input_text_field_custom.dart';
 import '/ui/widgets/password_field_custom.dart';
+import '../../../database/data_base_helper.dart';
+import '../../../database/data_base_helper_imp.dart';
 
 const authPageCenterBodyKey = ValueKey('861db839-bccd-4108-bd68-0da68b51c290');
 const authPageListViewKey = ValueKey('d6779fa9-ed65-4bc3-bfd1-363ed735dcc8');
@@ -26,11 +28,17 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   late bool isLoading;
+  late DataBaseHelper _dataBase;
 
   @override
   void initState() {
     isLoading = false;
+    _init();
     super.initState();
+  }
+
+  void _init() async {
+    _dataBase = DataBaseHelperImp();
   }
 
   @override
