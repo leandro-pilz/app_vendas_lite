@@ -1,4 +1,6 @@
+import 'package:app_vendas_lite/ui/pages/auth_pages/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -8,7 +10,14 @@ import 'ui/utils/theme_custom.dart';
 void main() {
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthBloc()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +29,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'App vendas lite',
       theme: themeCustom,
-      // home: const HomePage(),
       routerConfig: router,
       supportedLocales: const [
         Locale('pt', 'BR'),
