@@ -39,4 +39,20 @@ class UserAdapter {
       'refresh_token': user.token?.refreshToken,
     };
   }
+
+  User mapDbToUserToken({required Map<String, dynamic> map}) {
+    return User(
+      id: map['id'],
+      name: map['nome'],
+      email: map['email'],
+      status: map['situcao'],
+      createAt: map['criado_em'],
+      updateAt: map['alterado_em'],
+      token: UserToken(
+        id: map['token_id'],
+        accessToken: map['access_token'],
+        refreshToken: map['refresh_token'],
+      ),
+    );
+  }
 }

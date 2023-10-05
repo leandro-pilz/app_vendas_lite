@@ -1,3 +1,4 @@
+import '../exceptions/exceptions.dart';
 import 'entity.dart';
 import 'user_entity.dart';
 
@@ -24,5 +25,11 @@ final class Customer extends Entity {
   @override
   String filter() {
     return '$name$cpfCnpj';
+  }
+
+  void userIsNullToSaveCustomer(){
+    if(user == null || user?.id == null){
+      throw const UserIsNullException(message: 'Usuário não está vinculado ao clinte, ou não está salvo no banco de dados');
+    }
   }
 }

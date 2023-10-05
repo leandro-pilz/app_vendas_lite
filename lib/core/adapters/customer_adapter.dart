@@ -29,12 +29,13 @@ class CustomerAdapter {
     );
   }
 
-  Map<String, dynamic> customerToMap({required Customer customer}) {
+  Map<String, dynamic> customerToSaveMapDb({required Customer customer}) {
     return {
       'id': customer.id,
-      'idExterno': customer.externalId,
+      'ususario_id': customer.user?.id,
+      'id_externo': customer.externalId,
       'nome': customer.name,
-      'cpfCnpj': customer.cpfCnpj,
+      'cpf_cnpj': customer.cpfCnpj,
       'email': customer.email,
       'telefone': customer.phone,
       'situacao': customer.status,
