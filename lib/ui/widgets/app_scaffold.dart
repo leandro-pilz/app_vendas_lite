@@ -41,7 +41,7 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: (useAppBar ?? false) ? kLargeElevation : 0.0,
-        backgroundColor: !(useAppBar ?? false) ? Colors.white : null,
+        backgroundColor: !(useAppBar ?? false) ? bodyBackgroundColor ?? Colors.white : null,
         title: (useAppBar ?? false)
             ? !(useSearchField ?? false)
                 ? Text(title ?? '')

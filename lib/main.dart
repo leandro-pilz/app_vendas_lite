@@ -1,19 +1,24 @@
-import 'package:app_vendas_lite/ui/pages/auth_pages/auth_bloc.dart';
+import 'package:app_vendas_lite/initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:get_it/get_it.dart';
 
-import '/ui/router.dart';
+import 'ui/pages/auth_pages/auth_bloc.dart';
+import 'ui/router.dart';
 import 'ui/utils/theme_custom.dart';
+
+GetIt getIt = GetIt.instance;
 
 void main() {
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
+  final initializer = Initializer();
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context) => AuthBloc(dataBase: initializer.getDataBase())),
       ],
       child: const MyApp(),
     ),
