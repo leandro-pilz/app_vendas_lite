@@ -1,27 +1,42 @@
 import '../entities/user_entity.dart';
+import '../entities/user_token_entity.dart';
 
-class UsuarioAdapter {
-  static User mapParaEntidade({required Map<String, dynamic> map}) {
+class UserAdapter {
+  User mapApiToUser({required Map<String, dynamic> map}) {
     return User(
-      externalId: map['id'],
+      id: map['id'],
       name: map['nome'],
+      email: map['email'],
       status: map['situacao'],
-      createAt: map['criado_em'],
-      updateAt: map['alterado_em'],
+      createAt: map['criadoEm'],
+      updateAt: map['alteradoEm'],
     );
   }
 
-  static Map<String, dynamic> entidadeParaMap({required User usuario}) {
+  void mapApiToUserToken({required Map<String, dynamic> map, required User user}) {
+    user.token = UserToken(
+      accessToken: map['accessToken'],
+      refreshToken: map['refreshToken'],
+    );
+  }
+
+  Map<String, dynamic> userToSaveMapDb({required User user}) {
     return {
-      'externalId': usuario.externalId,
-      'nome': usuario.name,
-      'situacao': usuario.status,
-      'criado_em': usuario.createAt,
-      'alterado_em': usuario.updateAt,
+      'id': user.id,
+      'nome': user.name,
+      'email': user.email,
+      'situacao': user.status,
+      'criado_em': user.createAt,
+      'alterado_em': user.updateAt,
     };
   }
 
-  static List<Map<String, dynamic>> entidadesParaMap({required List<User> usuarios}) {
-    return usuarios.map((e) => entidadeParaMap(usuario: e)).toList();
+  Map<String, dynamic> userTokenToSaveMapDb({required User user}) {
+    return {
+      'id': user.token?.id,
+      'usuario_id': user.id,
+      'access_token': user.token?.accessToken,
+      'refresh_token': user.token?.refreshToken,
+    };
   }
 }

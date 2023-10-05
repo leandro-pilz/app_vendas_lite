@@ -9,9 +9,9 @@ final class QuotationEntity extends Entity {
   double amount;
   DateTime? deliveryDate;
   String? note;
-  final CustomerEntity customer;
-  FormPaymentEntity? formPayment;
-  PaymentTermEntity? paymentTerm;
+  final Customer customer;
+  FormPayment? formPayment;
+  PaymentTerm? paymentTerm;
   final List<QuotationItemEntity> items;
 
   QuotationEntity({

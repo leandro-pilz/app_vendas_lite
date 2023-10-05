@@ -33,7 +33,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   void initState() {
     isLoading = false;
-    // _init();
+    _init();
     super.initState();
   }
 

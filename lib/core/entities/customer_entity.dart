@@ -1,12 +1,14 @@
 import 'entity.dart';
+import 'user_entity.dart';
 
-final class CustomerEntity extends Entity {
-  String name;
-  String cpfCnpj;
+final class Customer extends Entity {
+  final String name;
+  final String cpfCnpj;
   String? email;
   String? phone;
+  User? user;
 
-  CustomerEntity({
+  Customer({
     super.id,
     required super.externalId,
     required this.name,
@@ -16,6 +18,7 @@ final class CustomerEntity extends Entity {
     required super.status,
     required super.createAt,
     required super.updateAt,
+    this.user,
   });
 
   @override

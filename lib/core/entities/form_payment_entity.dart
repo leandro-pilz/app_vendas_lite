@@ -1,17 +1,22 @@
 import 'entity.dart';
 import 'payment_term_entity.dart';
+import 'user_entity.dart';
 
-final class FormPaymentEntity extends Entity {
+final class FormPayment extends Entity {
+  final String? code;
   final String name;
-  final List<PaymentTermEntity> paymentTerms;
+  User? user;
+  final List<PaymentTerm> paymentTerms;
 
-  FormPaymentEntity({
+  FormPayment({
     super.id,
     required super.externalId,
+    this.code,
     required this.name,
     required super.status,
     required super.createAt,
     required super.updateAt,
+    this.user,
     required this.paymentTerms,
   });
 

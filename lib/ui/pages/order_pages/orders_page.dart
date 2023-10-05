@@ -28,7 +28,7 @@ class _OrdersPageState extends State<OrdersPage> {
   late DateTime lastDate;
   late bool isProgress;
   late InfinityScrollListener scrollController;
-  CustomerEntity? customerSelected;
+  Customer? customerSelected;
 
   @override
   void initState() {

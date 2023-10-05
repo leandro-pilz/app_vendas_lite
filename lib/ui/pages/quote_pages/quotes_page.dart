@@ -28,10 +28,10 @@ class QuotesPage extends StatefulWidget {
 }
 
 class _QuotesPageState extends State<QuotesPage> {
-  late Function(Function(CustomerEntity customer)) onSelectedCustomer;
-  CustomerEntity? customerSelected;
-  late FormPaymentEntity formPaymentSelected;
-  late PaymentTermEntity paymentTermSelected;
+  late Function(Function(Customer customer)) onSelectedCustomer;
+  Customer? customerSelected;
+  late FormPayment formPaymentSelected;
+  late PaymentTerm paymentTermSelected;
   late InfinityScrollListener scrollController;
   late bool isProgress;
 

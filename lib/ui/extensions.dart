@@ -15,7 +15,7 @@ extension TextEditingControllerExt on TextEditingController {
   }
 }
 
-extension CustomerToString on CustomerEntity {
+extension CustomerToString on Customer {
   String cpfCnpjFormatted() {
     return cpfCnpj.trim().length == 11 ? UtilBrasilFields.obterCpf(cpfCnpj) : UtilBrasilFields.obterCnpj(cpfCnpj);
   }

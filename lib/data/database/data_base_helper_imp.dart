@@ -25,6 +25,7 @@ import 'migrations/V_1/migration_v1_10_04_cotacao_indice_usuario.dart';
 import 'migrations/V_1/migration_v1_11_00_item_cotacao.dart';
 import 'migrations/V_1/migration_v1_11_01_item_cotacao_indice_cotacao.dart';
 import 'migrations/V_1/migration_v1_11_02_item_cotacao_indice_sku.dart';
+import 'migrations/V_1/migration_v1_12_00_v_usuario_token.dart';
 
 class DataBaseHelperImp implements DataBaseHelper {
   static const _databaseName = "app_vendas.db";
@@ -70,6 +71,7 @@ class DataBaseHelperImp implements DataBaseHelper {
         createTableUserV1_11_00_ItemCotacao(batch: batch);
         createTableUserV1_11_01_ItemCotacaoIndiceCotacao(batch: batch);
         createTableUserV1_11_02_ItemCotacaoIndiceSku(batch: batch);
+        createTableUserV1_12_00_VUsuarioToken(batch: batch);
         await batch.commit();
       },
       onUpgrade: (dataBase, int oldVersion, int newVersion) {},

@@ -1,3 +1,4 @@
+import 'package:app_vendas_lite/core/entities/user_entity.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 
 import '../core/entities/customer_entity.dart';
@@ -10,6 +11,8 @@ import '../core/entities/sku_entity.dart';
 import '../core/entities/stock_entity.dart';
 
 final _date = DateTime.now();
+
+final _user = User(id: 1, name: 'user', email: 'user@user.com', status: true, createAt: _date, updateAt: _date);
 
 final _customersName = [
   'Diogo Casalinho Letras',
@@ -36,32 +39,33 @@ final _customersName = [
 
 final customers = List.generate(
   20,
-  (index) => CustomerEntity(
+  (index) => Customer(
     externalId: 'dfe14ea0-68b0-45a6-9363-75a6937ed77c$index',
     name: _customersName[index],
     cpfCnpj: UtilBrasilFields.gerarCNPJ(useFormat: true),
     status: true,
     createAt: _date,
     updateAt: _date,
+    user: _user,
   ),
 );
 
 final formPayments = [
-  FormPaymentEntity(
+  FormPayment(
     externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
     name: 'Boleto',
     status: true,
     createAt: _date,
     updateAt: _date,
     paymentTerms: [
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
         name: '30 dias',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: '3203a35c-3e4d-4f58-b4ce-7c0348eef602',
         name: '60 dias',
         status: true,
@@ -69,15 +73,16 @@ final formPayments = [
         updateAt: _date,
       )
     ],
+    user: _user,
   ),
-  FormPaymentEntity(
+  FormPayment(
     externalId: '9eef9414-d74f-4009-b401-e3a181cfded0',
     name: 'Cartão de débito',
     status: true,
     createAt: _date,
     updateAt: _date,
     paymentTerms: [
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: '7d7175e4-f9b4-4cfd-a0cb-2cf4e818422d',
         name: 'À vista',
         status: true,
@@ -85,50 +90,51 @@ final formPayments = [
         updateAt: _date,
       )
     ],
+    user: _user,
   ),
-  FormPaymentEntity(
+  FormPayment(
     externalId: 'e9203250-6d20-4c28-96a0-4ebb136b403b',
     name: 'Cartão de crédido',
     status: true,
     createAt: _date,
     updateAt: _date,
     paymentTerms: [
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: '4a655dcd-8db8-4108-8b1d-d0beba9ba1a5',
         name: '1 x s/juros',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: 'e21da299-1202-45c7-bcaa-247fe55b41a2',
         name: '2 x s/juros',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: 'f002ecc9-4d00-4408-be22-b010ca963637',
         name: '3 x s/juros',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: 'e9484c61-3ec5-4466-831d-deb6271833ea',
         name: '4 x com juros',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: '45707584-fb14-43c6-a481-7f068fcd6a54',
         name: '5 x com juros',
         status: true,
         createAt: _date,
         updateAt: _date,
       ),
-      PaymentTermEntity(
+      PaymentTerm(
         externalId: 'd1cbc834-146a-4d24-a6c9-a162b29c77b5',
         name: '6 x com juros',
         status: true,
@@ -136,16 +142,18 @@ final formPayments = [
         updateAt: _date,
       )
     ],
+    user: _user,
   ),
 ];
 
-final _customerQuotation = CustomerEntity(
+final _customerQuotation = Customer(
   externalId: 'b65ade5a-64a9-4c52-bd1a-b0fb743500d1',
   name: 'XXX XXXX XXXX XXXX',
   cpfCnpj: '97.707.242/0001-51',
   status: true,
   createAt: _date,
   updateAt: _date,
+  user: _user,
 );
 
 final skusList = [
@@ -368,15 +376,16 @@ final quotations = [
     quotationNumber: '001',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -549,15 +558,16 @@ final quotations = [
     quotationNumber: '002',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -574,15 +584,16 @@ final quotations = [
     quotationNumber: '003',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -599,15 +610,16 @@ final quotations = [
     quotationNumber: '004',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -624,15 +636,16 @@ final quotations = [
     quotationNumber: '005',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -649,15 +662,16 @@ final quotations = [
     quotationNumber: '006',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -674,15 +688,16 @@ final quotations = [
     quotationNumber: '007',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: '16428074-48a3-4a4a-b1d9-128cb987eb6a',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: 'be391bce-6e40-4bf6-9103-b73ba8778c7f',
       name: '30 dias',
       status: true,
@@ -699,15 +714,16 @@ final quotations = [
     quotationNumber: '008',
     amount: 0.0,
     customer: _customerQuotation,
-    formPayment: FormPaymentEntity(
+    formPayment: FormPayment(
       externalId: 'c6753f69-b3b3-484b-91a8-f34aa66b435b',
       name: 'Boleto',
       status: true,
       createAt: _date,
       updateAt: _date,
       paymentTerms: [],
+      user: _user,
     ),
-    paymentTerm: PaymentTermEntity(
+    paymentTerm: PaymentTerm(
       externalId: '9bd929c8-4c0e-44ff-a4c3-da8a697d7a2c',
       name: '30 dias',
       status: true,
